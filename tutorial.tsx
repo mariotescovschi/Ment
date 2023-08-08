@@ -33,7 +33,7 @@ const Tutorial = () => {
     return(
         <View style={style.page}>
             <SafeAreaView style = {style.AndroidSafeArea} >
-                <CustomText style = {style.title}> Ment </CustomText>
+                <CustomText style = {style.title}> Caca </CustomText>
             </SafeAreaView>
         </View>
     );
