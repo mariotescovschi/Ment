@@ -1,7 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View} from 'react-native';
+
+import {StyleSheet, Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import tutorial from './Login/tutorial';
+import Tutorial from './tutorial';
 import Home from './home';
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 interface Props {
@@ -20,7 +20,7 @@ export default function App(){
                 {user.isLoggedIn ? (
                     <Stack.Screen name = 'Home' component= {Home} options={{headerShown: false}}/>
                 ) : (
-                    <Stack.Screen name = 'Welcome' component= {tutorial} options={{headerShown: false}}/>
+                    <Stack.Screen name = 'Tutorial' component= {Tutorial} options={{headerShown: false}}/>
                 )}
             </Stack.Navigator>
         </NavigationContainer>
