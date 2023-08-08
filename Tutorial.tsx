@@ -1,4 +1,4 @@
-import {Platform, SafeAreaView, StyleSheet, Text, View, StatusBar, Button} from 'react-native';
+import {Platform, SafeAreaView, StyleSheet, Text, View, StatusBar, Button, Pressable} from 'react-native';
 import * as Font from 'expo-font';
 import {NavigationContainer, ParamListBase, useNavigation} from '@react-navigation/native';
 import {useEffect, useState} from "react";
@@ -34,13 +34,23 @@ const Tutorial = () => {
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
     return(
         <View style={style.page}>
-            <SafeAreaView style = {style.AndroidSafeArea} >
-                <CustomText style = {style.title}> Caca </CustomText>
-                <Button
-                    title={'LoginINPIZDAMASII'}
-                    onPress={() => navigation.navigate('Login')}
-                />
+            <SafeAreaView style = {style.header} >
+                <View style={style.extra}/>
+
+                <CustomText style = {style.title}> MENT </CustomText>
+
+                <View  style={style.button}>
+                <Pressable
+                    onPress={() => navigation.navigate('Login')}>
+                    <Text style={style.nextButton}> Sari peste </Text>
+                </Pressable>
+                </View>
+
             </SafeAreaView>
+
+            <View style={style.content}>
+
+            </View>
         </View>
     );
 }
@@ -53,16 +63,31 @@ const style = StyleSheet.create({
         flex: 1,
         backgroundColor: '#000',
     },
-    header: {
+    extra:{
+        width: '33%',
+        backgroundColor: '#000',
     },
     title: {
         color: '#fff',
         fontSize: 40,
+        textAlign: 'center',
+        alignSelf: 'center',
+        width: '33%',
     },
-    AndroidSafeArea: {
+    header: {
+        paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight + 5 : 0,
+        flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-       //paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight + 40 : 0,
+    },
+    nextButton:{
+        textAlign: 'right',
+        color: 'grey',
+    },
+    button:{
+        width: '33%',
+    },
 
+    content:{
     }
 })
