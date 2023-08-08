@@ -1,9 +1,10 @@
 
 import {StyleSheet, Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import Tutorial from './tutorial';
+import Tutorial from './Tutorial';
 import Home from './home';
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
+import Login from "./Login";
 interface Props {
     isLoggedIn: boolean;
 }
@@ -16,12 +17,9 @@ const Stack = createNativeStackNavigator();
 export default function App(){
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName= 'Login'>
-                {user.isLoggedIn ? (
-                    <Stack.Screen name = 'Home' component= {Home} options={{headerShown: false}}/>
-                ) : (
-                    <Stack.Screen name = 'Tutorial' component= {Tutorial} options={{headerShown: false}}/>
-                )}
+            <Stack.Navigator>
+                <Stack.Screen name = 'Tutorial' component= {Tutorial} options={{headerShown: false}}/>
+                <Stack.Screen name = 'Login' component= {Login} options={{headerShown: false}}/>
             </Stack.Navigator>
         </NavigationContainer>
     );

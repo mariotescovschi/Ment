@@ -1,7 +1,9 @@
-import {Platform, SafeAreaView, StyleSheet, Text, View, StatusBar} from 'react-native';
+import {Platform, SafeAreaView, StyleSheet, Text, View, StatusBar, Button} from 'react-native';
 import * as Font from 'expo-font';
+import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {useEffect, useState} from "react";
-
+import Login from "./Login";
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
 const CustomText = (props) => {
     const [fontLoaded, setFontLoaded] = useState(false);
 
@@ -29,11 +31,15 @@ const CustomText = (props) => {
 };
 
 const Tutorial = () => {
-
+    const navigation = useNavigation();
     return(
         <View style={style.page}>
             <SafeAreaView style = {style.AndroidSafeArea} >
                 <CustomText style = {style.title}> Caca </CustomText>
+                <Button
+                    title={'LoginINPIZDAMASII'}
+                    onPress={() => navigation.navigate('Login')}
+                />
             </SafeAreaView>
         </View>
     );
@@ -56,7 +62,7 @@ const style = StyleSheet.create({
     AndroidSafeArea: {
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight + 40 : 0,
+       //paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight + 40 : 0,
 
     }
 })
