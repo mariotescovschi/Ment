@@ -1,9 +1,9 @@
 import {Platform, SafeAreaView, StyleSheet, Text, View, StatusBar, Button} from 'react-native';
 import * as Font from 'expo-font';
-import {NavigationContainer, useNavigation} from '@react-navigation/native';
+import {NavigationContainer, ParamListBase, useNavigation} from '@react-navigation/native';
 import {useEffect, useState} from "react";
 import Login from "./Login";
-import {createNativeStackNavigator} from "@react-navigation/native-stack";
+import {createNativeStackNavigator, NativeStackNavigationProp} from "@react-navigation/native-stack";
 const CustomText = (props) => {
     const [fontLoaded, setFontLoaded] = useState(false);
 
@@ -31,7 +31,7 @@ const CustomText = (props) => {
 };
 
 const Tutorial = () => {
-    const navigation = useNavigation();
+    const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
     return(
         <View style={style.page}>
             <SafeAreaView style = {style.AndroidSafeArea} >
