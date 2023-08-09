@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import {Button, StyleSheet, Text, View} from 'react-native';
+import {Button, Pressable, StyleSheet, Text, View} from 'react-native';
 import {ParamListBase, useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 
@@ -9,10 +9,10 @@ const Login = () => {
         <View style={style.page}>
             <View style={style.container}>
         <Text style= {{color: '#fff'}}>caca</Text>
-            <Button
-                title={'back'}
-                onPress={() => navigation.navigate('Tutorial')}
-            />
+            <Pressable
+                onPress={()=> navigation.navigate('AddFriends')}>
+                 <Text style={style.button}>Continue</Text>
+            </Pressable>
                 </View>
         </View>
     );
@@ -26,11 +26,16 @@ const style = StyleSheet.create({
         backgroundColor: '#000',
     },
     button:{
+        textAlign: 'center',
         color: '#fff',
-        fontSize: 40,
-        borderStyle: 'solid',
+        fontSize: 25,
+        borderRadius: 20,
         borderWidth: 1,
-        borderColor: '#314432',
+        borderLeftWidth: 5,
+        borderRightWidth: 5,
+        paddingHorizontal: 155,
+        paddingVertical: 10,
+        borderColor: '#fff',
     },
     container: {
         flex: 1,
