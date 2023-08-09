@@ -5,7 +5,7 @@ import Tutorial from './Tutorial';
 import Home from './home';
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import Login from "./Login";
-import AddFriends from "./AddFriends";
+import TutorialItem from "./TutorialItem";
 interface Props {
     isLoggedIn: boolean;
 }
@@ -21,7 +21,6 @@ export default function App(){
             <Stack.Navigator>
                 <Stack.Screen name = 'Tutorial' component= {Tutorial} options={{headerShown: false}}/>
                 <Stack.Screen name = 'Login' component= {Login} options={{headerShown: false}}/>
-                <Stack.Screen name = 'AddFriends' component= {AddFriends} options={{headerShown: false}}/>
             </Stack.Navigator>
         </NavigationContainer>
     );

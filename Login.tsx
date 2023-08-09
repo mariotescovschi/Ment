@@ -10,7 +10,7 @@ const Login = () => {
             <View style={style.container}>
         <Text style= {{color: '#fff'}}>caca</Text>
             <Pressable
-                onPress={()=> navigation.navigate('AddFriends')}>
+                onPress={()=> navigation.navigate('Tutorial')}>
                  <Text style={style.button}>Continue</Text>
             </Pressable>
                 </View>
