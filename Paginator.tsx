@@ -1,6 +1,5 @@
 import {View, StyleSheet, Animated, useWindowDimensions} from 'react-native';
 import React from 'react';
-import slides from "./slides";
 
 const Paginator = ({data, scrollX}) => {
     const {width} = useWindowDimensions();
