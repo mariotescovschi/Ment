@@ -7,16 +7,18 @@ import {
     StatusBar,
     Button,
     Pressable,
-    TouchableOpacity, Animated, FlatList
+    TouchableOpacity, Animated, FlatList, ScrollView,
 } from 'react-native';
 import * as Font from 'expo-font';
 import {NavigationContainer, ParamListBase, useNavigation} from '@react-navigation/native';
-import {useEffect, useState} from "react";
+import React, {useEffect, useState, useRef} from "react";
 import Login from "./Login";
 import {createNativeStackNavigator, NativeStackNavigationProp} from "@react-navigation/native-stack";
 import Image = Animated.Image;
 import slides from "./slides";
 import TutorialItem from "./TutorialItem";
+import Paginator from "./Paginator";
+import decay = Animated.decay;
 const CustomText = (props) => {
     const [fontLoaded, setFontLoaded] = useState(false);
 
@@ -43,8 +45,30 @@ const CustomText = (props) => {
     );
 };
 
+
 const Tutorial = () => {
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const scrollX = useRef(new Animated.Value(0)).current;
+
+    const viewableItemsChanged = useRef(({ viewableItems }) => {
+        setCurrentIndex(viewableItems[0].index);
+    }).current;
+
+    const viewConfig = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;
+    const slidesRef = useRef(null);
+
+    const scrollTo = () => {
+        if (currentIndex < slides.length - 1) {
+            slidesRef.current.scrollToIndex({ index: currentIndex + 1 });
+        }
+        else {
+            navigation.navigate('Login');
+        }
+    };
+
     return(
         <View style={style.page}>
             <SafeAreaView style = {style.header} >
@@ -64,21 +88,34 @@ const Tutorial = () => {
 
             <View style={style.content}>
                 <FlatList
-                    style = {style.item}
                     data={slides}
-                    renderItem= {(item) => (
-                    <Image source={item.item.image}/>
-                )}
+                    renderItem= {({item}) => <TutorialItem item={item}/>}
                     horizontal
-                    showsHorizontalScrollIndicator
+                    showsHorizontalScrollIndicator={false}
                     pagingEnabled
-                    bounces={false}
+                    keyExtractor={(item) => item.id}
+                    onScroll={Animated.event(
+                        [{nativeEvent: {
+                            contentOffset: {x: scrollX}
+                        }}],
+                        {useNativeDriver: false},
+
+                    )}
+                    scrollEventThrottle={1}
+                    onViewableItemsChanged={viewableItemsChanged}
+                    viewabilityConfig={viewConfig}
+                    ref={slidesRef}
                 />
+
+                <View style={{marginBottom: '5%'}}>
+                    <Paginator data={slides} scrollX={scrollX}/>
+                </View>
             </View>
+
 
             <View style={style.nextButton1}>
                 <Pressable
-                    onPress={() => navigation.navigate('Login')}>
+                    onPress={() => scrollTo()}>
                     <CustomText style={style.nextButton}>Continuă</CustomText>
                 </Pressable>
             </View>
@@ -122,12 +159,10 @@ const style = StyleSheet.create({
         textAlign: 'center',
         color: '#fff',
         fontSize: 25,
-        borderRadius: 20,
+        borderRadius: Platform.OS === 'android' ? 50 : 25,
         borderWidth: 1,
-        borderLeftWidth: 5,
-        borderRightWidth: 5,
-        paddingHorizontal: 155,
-        paddingVertical: 10,
+        paddingHorizontal: '35%',
+        paddingVertical: '2%',
         borderColor: '#fff',
     },
     nextButton1:{
@@ -138,7 +173,6 @@ const style = StyleSheet.create({
         justifyContent: 'center',
     },
     item:{
-        alignSelf: 'flex-end',
     }
 
 })
