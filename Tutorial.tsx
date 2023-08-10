@@ -19,13 +19,14 @@ import slides from "./slides";
 import TutorialItem from "./TutorialItem";
 import Paginator from "./Paginator";
 import decay = Animated.decay;
+//Text with AsapCondensed font
 const CustomText = (props) => {
     const [fontLoaded, setFontLoaded] = useState(false);
 
     useEffect(() => {
         async function loadFont() {
             await Font.loadAsync({
-                'AsapCondensed': require('./assets/fonts/AsapCondensed-SemiBold.ttf'),
+                'AsapCondensed': require('./assets/fonts/AsapCondensed-Black.ttf'),
             });
 
             setFontLoaded(true);
@@ -47,19 +48,26 @@ const CustomText = (props) => {
 
 
 const Tutorial = () => {
+    const buttonName = ['Continuă', 'Continuă', 'Loghează-te'];
+
+    //For the skip button
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
 
+    //To know which slide is currently displayed
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const scrollX = useRef(new Animated.Value(0)).current;
 
+    //To know when the user has scrolled to the next slide
     const viewableItemsChanged = useRef(({ viewableItems }) => {
         setCurrentIndex(viewableItems[0].index);
     }).current;
 
     const viewConfig = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;
+
     const slidesRef = useRef(null);
 
+    //To scroll to the next slide
     const scrollTo = () => {
         if (currentIndex < slides.length - 1) {
             slidesRef.current.scrollToIndex({ index: currentIndex + 1 });
@@ -68,14 +76,16 @@ const Tutorial = () => {
             navigation.navigate('Login');
         }
     };
-
     return(
         <View style={style.page}>
+
+            {/*The header*/}
             <SafeAreaView style = {style.header} >
                 <View style={style.extra}/>
 
                 <CustomText style = {style.title}> MENT </CustomText>
 
+                {/*The skip button*/}
                 <View  style={style.button}>
                 <Pressable
                     onPress={() => navigation.navigate('Login')}>
@@ -85,8 +95,9 @@ const Tutorial = () => {
 
             </SafeAreaView>
 
-
             <View style={style.content}>
+
+                {/*The slides*/}
                 <FlatList
                     data={slides}
                     renderItem= {({item}) => <TutorialItem item={item}/>}
@@ -107,16 +118,28 @@ const Tutorial = () => {
                     ref={slidesRef}
                 />
 
+                {/*The paginator*/}
                 <View style={{marginBottom: '5%'}}>
                     <Paginator data={slides} scrollX={scrollX}/>
                 </View>
+
             </View>
 
 
-            <View style={style.nextButton1}>
+            <View style={style.nextButtonView}>
+                {/*The next button*/}
                 <Pressable
-                    onPress={() => scrollTo()}>
-                    <CustomText style={style.nextButton}>Continuă</CustomText>
+                    onPress={() => scrollTo()}
+                    style={
+                    [style.nextButton,
+                        {backgroundColor: currentIndex < slides.length - 1 ? 'black' : 'white' ,}]}
+                >
+                    <Text
+                        style={
+                        [style.nextButtonText, {color: currentIndex < slides.length - 1 ? 'grey' : 'black'}]}
+                    >
+                        {buttonName[currentIndex]}
+                    </Text>
                 </Pressable>
             </View>
         </View>
@@ -133,7 +156,6 @@ const style = StyleSheet.create({
     },
     extra:{
         width: '33%',
-        backgroundColor: '#000',
     },
     title: {
         color: '#fff',
@@ -155,18 +177,25 @@ const style = StyleSheet.create({
     button:{
         width: '33%',
     },
-    nextButton:{
+    nextButtonText:{
         textAlign: 'center',
-        color: '#fff',
-        fontSize: 25,
+        fontSize: 30,
+    },
+    nextButton:{
+        alignSelf: 'stretch',
+        justifyContent: 'center',
+        alignItems: 'center',
         borderRadius: Platform.OS === 'android' ? 50 : 25,
         borderWidth: 1,
-        paddingHorizontal: '35%',
+        marginHorizontal: '2%',
         paddingVertical: '2%',
-        borderColor: '#fff',
+        borderColor: 'grey',
     },
-    nextButton1:{
-      alignSelf: 'center',
+    nextButtonView:{
+        alignSelf: 'stretch',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '7%',
     },
     content:{
         height: '70%',
