@@ -1,24 +1,12 @@
-import {
-    Platform,
-    SafeAreaView,
-    StyleSheet,
-    Text,
-    View,
-    StatusBar,
-    Button,
-    Pressable,
-    TouchableOpacity, Animated, FlatList, ScrollView,
-} from 'react-native';
+import {Platform, SafeAreaView, StyleSheet, Text, View, StatusBar, Pressable, Animated, FlatList,} from 'react-native';
 import * as Font from 'expo-font';
-import {NavigationContainer, ParamListBase, useNavigation} from '@react-navigation/native';
+import {ParamListBase, useNavigation} from '@react-navigation/native';
 import React, {useEffect, useState, useRef} from "react";
-import Login from "./Login";
-import {createNativeStackNavigator, NativeStackNavigationProp} from "@react-navigation/native-stack";
-import Image = Animated.Image;
+import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import slides from "./slides";
 import TutorialItem from "./TutorialItem";
 import Paginator from "./Paginator";
-import decay = Animated.decay;
+
 //Text with AsapCondensed font
 const CustomText = (props) => {
     const [fontLoaded, setFontLoaded] = useState(false);

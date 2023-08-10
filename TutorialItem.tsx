@@ -1,19 +1,22 @@
 import {Text, View, StyleSheet, Image, useWindowDimensions} from 'react-native';
 import React from 'react';
-import slides from "./slides";
-import Paginator from "./Paginator";
 
 const TutorialItem = ({item}) => {
     const {width} = useWindowDimensions();
     return(
         <View style ={style.container}>
+            {/*The photos*/}
         <Image
             source={item.image}
             style={[style.image, {width, resizeMode: 'contain'}]}/>
-        <View style={{height: '20%'}}>
-        <Text style={style.title}>{item.title}</Text>
-        <Text style={style.description}>{item.description}</Text>
-        </View>
+
+
+            {/*The text*/}
+            <View style={{height: '20%'}}>
+                <Text style={style.title}>{item.title}</Text>
+                <Text style={style.description}>{item.description}</Text>
+            </View>
+
         </View>
     );
 }
