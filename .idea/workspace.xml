@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c0abe1c-1360-4ab5-82cd-9b2d992079d3" name="Changes" comment="pressable" />
+    <list default="true" id="1c0abe1c-1360-4ab5-82cd-9b2d992079d3" name="Changes" comment=".">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tutorial.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Tutorial.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,6 +32,9 @@
         <option name="url" value="https://github.com/mariotescovschi/Ment.git" />
       </UrlAndAccount>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -66,7 +75,7 @@
       <option name="presentableId" value="Default" />
       <updated>1691514498748</updated>
       <workItem from="1691514500405" duration="1212000" />
-      <workItem from="1691591854465" duration="6777000" />
+      <workItem from="1691591854465" duration="8882000" />
     </task>
     <task id="LOCAL-00001" summary="pressable + continue">
       <option name="closed" value="true" />
@@ -84,7 +93,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691602423140</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary=".">
+      <option name="closed" value="true" />
+      <created>1691659631200</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1691659631200</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,6 +121,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="pressable + continue" />
     <MESSAGE value="pressable" />
-    <option name="LAST_COMMIT_MESSAGE" value="pressable" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
 </project>

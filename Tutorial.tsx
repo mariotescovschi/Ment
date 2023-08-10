@@ -6,6 +6,7 @@ import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import slides from "./slides";
 import TutorialItem from "./TutorialItem";
 import Paginator from "./Paginator";
+import AddFriends from "./AddFriends";
 
 //Text with AsapCondensed font
 const CustomText = (props) => {
