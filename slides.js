@@ -4,20 +4,17 @@ export default[
         title: 'Slide 1',
         description: 'Slide 1 description',
         image: require('./assets/explanationPhotos/Unknown-3.jpg'),
-        buttonName: 'Continuă'
     },
     {
         id: '2',
         title: 'Slide 2',
         description: 'Slide 2 description',
         image: require('./assets/explanationPhotos/Unknown-4.jpg'),
-        buttonName: 'Continuă',
     },
     {
         id: '3',
         title: 'Slide 3',
         description: 'Slide 3 description',
         image: require('./assets/explanationPhotos/Unknown-5.jpg'),
-        buttonName: 'Loghează-te',
     },
 ]
