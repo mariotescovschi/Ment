@@ -1,25 +1,25 @@
-import {Pressable, StyleSheet, Text, View} from 'react-native';
+import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
 import {ParamListBase, useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
+import React, {useState} from "react";
+import {FIREBASE_AUTH} from './FireBaseConfig';
+import {isLoading} from "expo-font";
 
 const Login = () => {
+    const [phone, setPhone] = useState('');
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+    const auth=FIREBASE_AUTH;
+
     return(
-        <View style={style.page}>
-            <View style={style.container}>
-        <Text style= {{color: '#fff'}}>caca</Text>
-            <Pressable
-                onPress={()=> navigation.navigate('AddFriends')}>
-                 <Text style={style.button}>Continue</Text>
-            </Pressable>
-                </View>
+        <View style={styles.container}>
+            <TextInput style={styles.input} placeholder="Phone Number" autoCapitalize="none" onChangeText={(text) => setPhone(text)}></TextInput>
         </View>
     );
 }
 
 export default Login;
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
     page:{
         flex: 1,
         backgroundColor: '#000',
@@ -37,10 +37,17 @@ const style = StyleSheet.create({
         borderColor: '#fff',
     },
     container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-
+        marginHorizontal:20,
+        flex:1,
+        justifyContent: 'center'
+    },
+    input: {
+        marginVertical:4,
+        height:50,
+        borderWidth: 1,
+        borderRadius:4,
+        padding: 10,
+        backgroundColor: '#fff'
     }
     }
 );
