@@ -12,7 +12,7 @@ const Login = () => {
 
     return(
         <View style={styles.container}>
-            <TextInput style={styles.input} placeholder="Phone Number" autoCapitalize="none" onChangeText={(text) => setPhone(text)}></TextInput>
+            <TextInput style={styles.input} keyboardType={'phone-pad'} placeholder="Phone Number" autoCapitalize="none" onChangeText={(text) => setPhone(text)}></TextInput>
         </View>
     );
 }
