@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c0abe1c-1360-4ab5-82cd-9b2d992079d3" name="Changes" comment="Input phone number">
+    <list default="true" id="1c0abe1c-1360-4ab5-82cd-9b2d992079d3" name="Changes" comment="numpad">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +81,8 @@
       <workItem from="1691514500405" duration="1212000" />
       <workItem from="1691591854465" duration="10602000" />
       <workItem from="1691663446728" duration="9754000" />
-      <workItem from="1691683282718" duration="6089000" />
+      <workItem from="1691683282718" duration="15954000" />
+      <workItem from="1691925584643" duration="2813000" />
     </task>
     <task id="LOCAL-00001" summary="pressable + continue">
       <option name="closed" value="true" />
@@ -122,7 +124,23 @@
       <option name="project" value="LOCAL" />
       <updated>1691839064591</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="numpad">
+      <option name="closed" value="true" />
+      <created>1691842292798</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1691842292798</updated>
+    </task>
+    <task id="LOCAL-00007" summary="numpad">
+      <option name="closed" value="true" />
+      <created>1691858947821</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1691858947822</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,6 +162,7 @@
     <MESSAGE value="pressable" />
     <MESSAGE value="." />
     <MESSAGE value="Input phone number" />
-    <option name="LAST_COMMIT_MESSAGE" value="Input phone number" />
+    <MESSAGE value="numpad" />
+    <option name="LAST_COMMIT_MESSAGE" value="numpad" />
   </component>
 </project>
