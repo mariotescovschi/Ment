@@ -5,19 +5,11 @@ import {
     Text,
     View,
     StatusBar,
-    Button,
-    Pressable,
-    TouchableOpacity, Animated, FlatList
 } from 'react-native';
 import * as Font from 'expo-font';
-import {NavigationContainer, ParamListBase, useNavigation} from '@react-navigation/native';
+import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {useEffect, useState} from "react";
-import Login from "./Login";
-import {createNativeStackNavigator, NativeStackNavigationProp} from "@react-navigation/native-stack";
-import Image = Animated.Image;
-import slides from "./slides";
-import TutorialItem from "./TutorialItem";
-
+import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 
 const CustomText = (props) => {
     const [fontLoaded, setFontLoaded] = useState(false);
@@ -25,7 +17,7 @@ const CustomText = (props) => {
     useEffect(() => {
         async function loadFont() {
             await Font.loadAsync({
-                'AsapCondensed': require('./assets/fonts/AsapCondensed-SemiBold.ttf'),
+                'AsapCondensed': require('../assets/fonts/AsapCondensed-SemiBold.ttf'),
             });
 
             setFontLoaded(true);

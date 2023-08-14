@@ -1,12 +1,10 @@
 
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import Tutorial from './Tutorial';
-import Home from './home';
+import Tutorial from './SignIn/Intro/Tutorial';
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import Login from "./Login";
-import TutorialItem from "./TutorialItem";
-import AddFriends from "./AddFriends";
+import Login from "./SignIn/Login";
+import AddFriends from "./SignIn/AddFriends";
 interface Props {
     isLoggedIn: boolean;
 }

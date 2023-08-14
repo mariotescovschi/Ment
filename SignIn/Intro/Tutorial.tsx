@@ -6,7 +6,6 @@ import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import slides from "./slides";
 import TutorialItem from "./TutorialItem";
 import Paginator from "./Paginator";
-import AddFriends from "./AddFriends";
 
 //Text with AsapCondensed font
 const CustomText = (props) => {
@@ -15,7 +14,7 @@ const CustomText = (props) => {
     useEffect(() => {
         async function loadFont() {
             await Font.loadAsync({
-                'AsapCondensed': require('./assets/fonts/AsapCondensed-Black.ttf'),
+                'AsapCondensed': require('../../assets/fonts/AsapCondensed-Black.ttf'),
             });
 
             setFontLoaded(true);
@@ -44,7 +43,6 @@ const Tutorial = () => {
 
     //To know which slide is currently displayed
     const [currentIndex, setCurrentIndex] = useState(0);
-
     const scrollX = useRef(new Animated.Value(0)).current;
 
     //To know when the user has scrolled to the next slide
@@ -53,7 +51,6 @@ const Tutorial = () => {
     }).current;
 
     const viewConfig = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;
-
     const slidesRef = useRef(null);
 
     //To scroll to the next slide
@@ -65,24 +62,32 @@ const Tutorial = () => {
             navigation.navigate('Login');
         }
     };
-    return(
-        <View style={style.page}>
 
+    //To show the skip button
+    const showSkip = () => {
+            return(
+                    <Pressable onPress={() => navigation.navigate('Login')}>
+                        <Text style={style.skipButton}> Sari peste </Text>
+                    </Pressable>
+            )
+
+    }
+    return(
+        <SafeAreaView style={style.page}>
+            <StatusBar barStyle="light-content" backgroundColor='black'/>
             {/*The header*/}
-            <SafeAreaView style = {style.header} >
+            <View style = {style.header} >
                 <View style={style.extra}/>
 
                 <CustomText style = {style.title}> MENT </CustomText>
 
                 {/*The skip button*/}
-                <View  style={style.button}>
-                <Pressable
-                    onPress={() => navigation.navigate('Login')}>
-                    <Text style={style.skipButton}> Sari peste </Text>
-                </Pressable>
-                </View>
+                <View style={style.button} >
+                    {currentIndex < slides.length - 1 ? showSkip() : null}
+                    </View>
 
-            </SafeAreaView>
+
+            </View>
 
             <View style={style.content}>
 
@@ -131,7 +136,7 @@ const Tutorial = () => {
                     </Text>
                 </Pressable>
             </View>
-        </View>
+        </SafeAreaView>
     );
 }
 
@@ -147,6 +152,7 @@ const style = StyleSheet.create({
         width: '33%',
     },
     title: {
+        includeFontPadding: false,
         color: '#fff',
         fontSize: 40,
         textAlign: 'center',
@@ -154,7 +160,7 @@ const style = StyleSheet.create({
         width: '33%',
     },
     header: {
-        paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight + 5 : 0,
+        flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
@@ -168,7 +174,7 @@ const style = StyleSheet.create({
     },
     nextButtonText:{
         textAlign: 'center',
-        fontSize: 30,
+        fontSize: 20,
     },
     nextButton:{
         alignSelf: 'stretch',
@@ -177,17 +183,17 @@ const style = StyleSheet.create({
         borderRadius: Platform.OS === 'android' ? 50 : 25,
         borderWidth: 1,
         marginHorizontal: '2%',
-        paddingVertical: '2%',
+        paddingVertical: '2.5%',
         borderColor: 'grey',
     },
     nextButtonView:{
         alignSelf: 'stretch',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '7%',
+        flex: 1,
     },
     content:{
-        height: '70%',
+        flex: 10,
         justifyContent: 'center',
     },
     item:{

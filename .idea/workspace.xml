@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c0abe1c-1360-4ab5-82cd-9b2d992079d3" name="Changes" comment="numpad">
+    <list default="true" id="1c0abe1c-1360-4ab5-82cd-9b2d992079d3" name="Changes" comment="Modificat locurile fisierelor&#10;Facut skipButton sa dispara pe ultimu slide">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AddFriends.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/AddFriends.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Paginator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/Intro/Paginator.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tutorial.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/Intro/Tutorial.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TutorialItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/Intro/TutorialItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slides.js" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/Intro/slides.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,12 +66,14 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/vasilegeorge/WebstormProjects/Ment/node_modules/typescript/lib&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/tescovschimario/WebstormProjects/Ment/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/SignIn" />
+      <recent name="$PROJECT_DIR$/SignIn/Intro" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -83,6 +90,9 @@
       <workItem from="1691663446728" duration="9754000" />
       <workItem from="1691683282718" duration="15954000" />
       <workItem from="1691925584643" duration="2813000" />
+      <workItem from="1691999940146" duration="143000" />
+      <workItem from="1692000084623" duration="314000" />
+      <workItem from="1692000713196" duration="3651000" />
     </task>
     <task id="LOCAL-00001" summary="pressable + continue">
       <option name="closed" value="true" />
@@ -163,6 +173,7 @@
     <MESSAGE value="." />
     <MESSAGE value="Input phone number" />
     <MESSAGE value="numpad" />
-    <option name="LAST_COMMIT_MESSAGE" value="numpad" />
+    <MESSAGE value="Modificat locurile fisierelor&#10;Facut skipButton sa dispara pe ultimu slide" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modificat locurile fisierelor&#10;Facut skipButton sa dispara pe ultimu slide" />
   </component>
 </project>

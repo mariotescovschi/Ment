@@ -1,22 +1,12 @@
-import {
-    ActivityIndicator,
-    Button,
-    KeyboardAvoidingView,
-    Pressable,
-    StyleSheet,
-    Text,
-    TextInput,
-    View
-} from 'react-native';
+import {ActivityIndicator, Button, KeyboardAvoidingView, StyleSheet, TextInput, View} from 'react-native';
 import {ParamListBase, useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import React, {useState} from "react";
-import {FIREBASE_AUTH} from './FireBaseConfig';
+import {FIREBASE_AUTH} from '../FireBaseConfig';
 import {signInWithEmailAndPassword, createUserWithEmailAndPassword} from 'firebase/auth';
 
 
 const Login = () => {
-    const [phone, setPhone] = useState('');
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
     const [email, setEmail] = useState('');
     const [loading, setLoading] = useState(false);
