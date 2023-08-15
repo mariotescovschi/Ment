@@ -180,7 +180,7 @@ const style = StyleSheet.create({
         alignSelf: 'stretch',
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: Platform.OS === 'android' ? 50 : 25,
+        borderRadius: 50,
         borderWidth: 1,
         marginHorizontal: '2%',
         paddingVertical: '2.5%',

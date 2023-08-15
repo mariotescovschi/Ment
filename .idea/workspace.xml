@@ -5,19 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c0abe1c-1360-4ab5-82cd-9b2d992079d3" name="Changes" comment="Modificat locurile fisierelor&#10;Facut skipButton sa dispara pe ultimu slide">
+      <change afterPath="$PROJECT_DIR$/assets/CustomText.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AddFriends.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/AddFriends.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paginator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/Intro/Paginator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tutorial.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/Intro/Tutorial.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TutorialItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/Intro/TutorialItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/slides.js" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/Intro/slides.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignIn/Intro/Tutorial.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/Intro/Tutorial.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignIn/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/Login.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -72,6 +76,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets" />
       <recent name="$PROJECT_DIR$/SignIn" />
       <recent name="$PROJECT_DIR$/SignIn/Intro" />
       <recent name="$PROJECT_DIR$" />
@@ -92,7 +97,9 @@
       <workItem from="1691925584643" duration="2813000" />
       <workItem from="1691999940146" duration="143000" />
       <workItem from="1692000084623" duration="314000" />
-      <workItem from="1692000713196" duration="3651000" />
+      <workItem from="1692000713196" duration="8207000" />
+      <workItem from="1692115369986" duration="27000" />
+      <workItem from="1692115404767" duration="10865000" />
     </task>
     <task id="LOCAL-00001" summary="pressable + continue">
       <option name="closed" value="true" />
@@ -150,7 +157,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691858947822</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Modificat locurile fisierelor&#10;Facut skipButton sa dispara pe ultimu slide">
+      <option name="closed" value="true" />
+      <created>1692006002674</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1692006002674</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

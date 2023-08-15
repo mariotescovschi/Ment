@@ -1,9 +1,21 @@
-import {ActivityIndicator, Button, KeyboardAvoidingView, StyleSheet, TextInput, View} from 'react-native';
+import {
+    ActivityIndicator,
+    Button,
+    KeyboardAvoidingView,
+    Pressable,
+    SafeAreaView,
+    StyleSheet,
+    TextInput,
+    Text,
+    View, Keyboard, Platform
+} from 'react-native';
 import {ParamListBase, useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import React, {useState} from "react";
 import {FIREBASE_AUTH} from '../FireBaseConfig';
 import {signInWithEmailAndPassword, createUserWithEmailAndPassword} from 'firebase/auth';
+import slides from "./Intro/slides";
+import CustomText from "../assets/CustomText";
 
 
 const Login = () => {
@@ -39,55 +51,137 @@ const Login = () => {
     }
 
     return(
-        <View style={styles.container}>
-            <KeyboardAvoidingView behavior = 'padding'>
-            <TextInput value={email} style={styles.input}  placeholder="Email" autoCapitalize="none" onChangeText={(text) => setEmail(text)}></TextInput>
-            <TextInput secureTextEntry={true} value={password} style={styles.input} autoCapitalize="none" placeholder='Password' onChangeText={(text) => setPassword(text)}></TextInput>
-            {loading ?
-                (<ActivityIndicator size="large" color="#0000ff"/>
-            ):(
-                <>
-                <Button title="Login" onPress={() => signIn()} />
-                <Button title="SignUp" onPress={() => signUp()} />
-                </>
-                )
+        <SafeAreaView style={style.page}>
+
+            {/* The header */}
+            <View style={style.header}>
+                <View style={{width: '33%'}}/>
+
+                <CustomText style = {style.title}> MENT </CustomText>
+
+                <View style={{width: '33%'}} />
+            </View>
+
+            {/* Empty space */}
+            <View style={{flex: 1}}/>
+
+            {/* Inputs */}
+            <View style={style.content}>
+                <View style={style.inputView}>
+                    <TextInput value={email} style={style.input} autoCapitalize="none" placeholder="Email" placeholderTextColor="white" onChangeText={(text) => setEmail(text)}></TextInput>
+                    <TextInput secureTextEntry={true} value={password} style={style.input} autoCapitalize="none" placeholder='Parola' placeholderTextColor="white" onChangeText={(text) => setPassword(text)}></TextInput>
+                </View>
+
+                <View style={{flex: 2.7}}>
+                {/* Create account */}
+                <View style={style.createAccount}>
+                    <Text style={{color: 'white', fontSize: 16}}>Nu ai cont? </Text>
+                    <Pressable onPress={() => alert('cucu mare')}>
+                        <Text style={{color: 'grey', fontSize: 16}}>Creeaza unul!</Text>
+                    </Pressable>
+                </View>
+                {/* Reset password */}
+                <View style={style.forgotPassword}>
+                    <Pressable onPress={() => alert('cucu mic')} style={{}}>
+                        <Text style={{color: 'grey', fontSize: 16}}>Am uitat parola</Text>
+                    </Pressable>
+                </View>
+                    {/* Empty space */}
+                    <View style={{flex: 10}}/>
+
+                </View>
+            </View>
+
+            <View style={style.loginButton}>
+                {loading ?
+                    (<ActivityIndicator size="large" color="#fff"/>
+                    ):(
+                <Pressable onPress={() => signIn()} style={style.button}>
+                    <Text style={style.buttonText}> Login </Text>
+                </Pressable>)
                 }
-            </KeyboardAvoidingView>
-        </View>
+
+            </View>
+        </SafeAreaView>
     );
 }
 
 export default Login;
 
-const styles = StyleSheet.create({
+const style = StyleSheet.create({
     page:{
         flex: 1,
         backgroundColor: '#000',
+        justifyContent: 'space-evenly',
+        alignItems: 'stretch',
     },
-    button:{
-        textAlign: 'center',
+
+    createAccount:{
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+    },
+
+    forgotPassword:{
+
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+    },
+
+    header: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+
+    title: {
+        includeFontPadding: false,
         color: '#fff',
-        fontSize: 25,
-        borderRadius: 20,
+        fontSize: 40,
+        textAlign: 'center',
+        alignSelf: 'center',
+        width: '33%',
+    },
+
+    button:{
+        borderColor: 'white',
         borderWidth: 1,
-        borderLeftWidth: 5,
-        borderRightWidth: 5,
-        paddingHorizontal: 155,
-        paddingVertical: 10,
-        borderColor: '#fff',
+        borderRadius: 50,
+        backgroundColor: '#fff',
+        margin: '2%',
     },
-    container: {
-        marginHorizontal:20,
-        flex:1,
-        justifyContent: 'center'
+
+    buttonText:{
+        textAlign: 'center',
+        fontSize: 20,
+        margin: '2.5%',
+        color: 'black',
     },
+
+    content: {
+        flex: 10,
+    },
+
     input: {
-        marginVertical:4,
-        height:50,
+        textAlign: 'center',
+        height: 40,
+        margin: '2%',
+        color: '#fff',
+        borderColor: 'white',
         borderWidth: 1,
-        borderRadius:4,
-        padding: 10,
-        backgroundColor: '#fff'
+        borderRadius: 50,
+        fontSize: 15,
+    },
+
+    inputView: {
+        flex: 1,
+        justifyContent: 'center',
+    },
+
+    loginButton: {
+        flex: 2,
+        justifyContent: 'flex-end',
     }
-    }
+}
 );

@@ -1,16 +1,19 @@
 
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import Tutorial from './SignIn/Intro/Tutorial';
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import Login from "./SignIn/Login";
 import AddFriends from "./SignIn/AddFriends";
+import React, {useEffect, useState} from "react";
+import * as Font from "expo-font";
 interface Props {
     isLoggedIn: boolean;
 }
 const user: Props = {
     isLoggedIn: false,
 }
+
 
 const Stack = createNativeStackNavigator();
 
