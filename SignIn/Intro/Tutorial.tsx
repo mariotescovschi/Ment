@@ -59,7 +59,7 @@ const Tutorial = () => {
             slidesRef.current.scrollToIndex({ index: currentIndex + 1 });
         }
         else {
-            navigation.navigate('Login');
+            navigation.replace('Login');
         }
     };
 

@@ -14,8 +14,8 @@ import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import React, {useState} from "react";
 import {FIREBASE_AUTH} from '../FireBaseConfig';
 import {signInWithEmailAndPassword, createUserWithEmailAndPassword} from 'firebase/auth';
-import slides from "./Intro/slides";
 import CustomText from "../assets/CustomText";
+import Name from "./CreateAccount/Name";
 
 
 const Login = () => {
@@ -23,13 +23,14 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [loading, setLoading] = useState(false);
     const [password, setPassword] = useState('');
-    const auth=FIREBASE_AUTH;
+    const auth= FIREBASE_AUTH;
 
     const signIn = async() =>{
         setLoading(true);
         try{
             const response = await signInWithEmailAndPassword(auth, email, password);
             console.log(response);
+            navigation.replace('Home');
         } catch(error){
             console.log(error);
             alert('SignIn Failed!');
@@ -37,6 +38,7 @@ const Login = () => {
             setLoading(false);
         }
     }
+
     const signUp = async() =>{
         setLoading(true);
         try{
@@ -68,15 +70,15 @@ const Login = () => {
             {/* Inputs */}
             <View style={style.content}>
                 <View style={style.inputView}>
-                    <TextInput value={email} style={style.input} autoCapitalize="none" placeholder="Email" placeholderTextColor="white" onChangeText={(text) => setEmail(text)}></TextInput>
-                    <TextInput secureTextEntry={true} value={password} style={style.input} autoCapitalize="none" placeholder='Parola' placeholderTextColor="white" onChangeText={(text) => setPassword(text)}></TextInput>
+                    <TextInput value={email} style={style.input} autoCapitalize="none" placeholder="Email" placeholderTextColor="white" onChangeText={(text) => setEmail(text)}/>
+                    <TextInput secureTextEntry={true} value={password} style={style.input} autoCapitalize="none" placeholder='Parola' placeholderTextColor="white" onChangeText={(text) => setPassword(text)}/>
                 </View>
 
                 <View style={{flex: 2.7}}>
                 {/* Create account */}
                 <View style={style.createAccount}>
                     <Text style={{color: 'white', fontSize: 16}}>Nu ai cont? </Text>
-                    <Pressable onPress={() => alert('cucu mare')}>
+                    <Pressable onPress={() => navigation.navigate('Name')}>
                         <Text style={{color: 'grey', fontSize: 16}}>Creeaza unul!</Text>
                     </Pressable>
                 </View>
@@ -92,16 +94,22 @@ const Login = () => {
                 </View>
             </View>
 
-            <View style={style.loginButton}>
+            <KeyboardAvoidingView
+                behavior={Platform.OS === "ios" ? "padding" : "height"}
+                style={style.loginButton}>
                 {loading ?
                     (<ActivityIndicator size="large" color="#fff"/>
                     ):(
-                <Pressable onPress={() => signIn()} style={style.button}>
+                <Pressable onPress={() => {
+                    signIn();
+                    Keyboard.dismiss();
+                }} style={style.button}>
                     <Text style={style.buttonText}> Login </Text>
-                </Pressable>)
+                </Pressable>
+                    )
                 }
 
-            </View>
+            </KeyboardAvoidingView>
         </SafeAreaView>
     );
 }
@@ -123,13 +131,12 @@ const style = StyleSheet.create({
     },
 
     forgotPassword:{
-
         justifyContent: 'flex-start',
         alignItems: 'center',
     },
 
     header: {
-        flex: 1,
+        flex: 1.2,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
