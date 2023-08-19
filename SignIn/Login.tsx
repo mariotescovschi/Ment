@@ -1,6 +1,5 @@
 import {
     ActivityIndicator,
-    Button,
     KeyboardAvoidingView,
     Pressable,
     SafeAreaView,
@@ -13,10 +12,9 @@ import {ParamListBase, useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import React, {useState} from "react";
 import {FIREBASE_AUTH} from '../FireBaseConfig';
-import {signInWithEmailAndPassword, createUserWithEmailAndPassword} from 'firebase/auth';
+import {signInWithEmailAndPassword} from 'firebase/auth';
 import CustomText from "../assets/CustomText";
-import Name from "./CreateAccount/Name";
-
+import {useAuth} from "../AuthContext";
 
 const Login = () => {
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
@@ -24,33 +22,25 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
     const [password, setPassword] = useState('');
     const auth= FIREBASE_AUTH;
-
+    const {
+        authUser,
+        setAuthUser,
+        isLoggedIn,
+        setIsLoggedIn,
+        } = useAuth();
     const signIn = async() =>{
         setLoading(true);
         try{
-            const response = await signInWithEmailAndPassword(auth, email, password);
-            console.log(response);
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
             if (user.emailVerified)
-                navigation.replace('Home');
+                setIsLoggedIn(true);
+
             else alert('Error');
-        } catch(error){
+        }
+        catch(error){
             console.log(error);
             alert('SignIn Failed!');
-        } finally {
-            setLoading(false);
-        }
-    }
-
-    const signUp = async() =>{
-        setLoading(true);
-        try{
-            const response = await createUserWithEmailAndPassword(auth, email, password);
-            console.log(response);
-            alert('Check your emails');
-        } catch(error){
-            console.log(error);
         } finally {
             setLoading(false);
         }

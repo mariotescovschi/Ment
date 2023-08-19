@@ -6,6 +6,7 @@ import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import slides from "./slides";
 import TutorialItem from "./TutorialItem";
 import Paginator from "./Paginator";
+import theUser from "../../UserData";
 
 //Text with AsapCondensed font
 const CustomText = (props) => {
@@ -36,6 +37,9 @@ const CustomText = (props) => {
 
 
 const Tutorial = () => {
+    console.log(theUser.isLoggedIn);
+    console.log(theUser.email);
+
     const buttonName = ['Continuă', 'Continuă', 'Loghează-te'];
 
     //For the skip button

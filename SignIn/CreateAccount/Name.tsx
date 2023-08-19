@@ -30,7 +30,7 @@ const Name = () => {
                 </Text>
 
                 <Text style={{color: 'grey', fontSize: 18, marginHorizontal: '2%'}}>
-                    Introdu numele tau real.
+                     Pentru a fi usor de recunoscut de colegii tai.
                 </Text>
 
             <TextInput
