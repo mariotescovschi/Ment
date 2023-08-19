@@ -14,7 +14,8 @@ import {ParamListBase, useFocusEffect, useNavigation} from "@react-navigation/na
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import React, {useState, useEffect, useCallback} from "react";
 import {FIREBASE_AUTH} from "../../FireBaseConfig";
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, updateProfile} from "firebase/auth";
+import create = StyleSheet.create;
 
 
 const AccountCreation = () => {
@@ -29,9 +30,12 @@ const AccountCreation = () => {
         try{
             const response = await createUserWithEmailAndPassword(auth, email, password);
             console.log(response);
+            const user=auth.currentUser;
+            await sendEmailVerification(user);
             alert('Check your emails');
         } catch(error){
             console.log(error);
+            alert('Deja ai cont boule');
         } finally {
             setLoading(false);
         }

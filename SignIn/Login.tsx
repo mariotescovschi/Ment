@@ -30,7 +30,11 @@ const Login = () => {
         try{
             const response = await signInWithEmailAndPassword(auth, email, password);
             console.log(response);
-            navigation.replace('Home');
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+            if (user.emailVerified)
+                navigation.replace('Home');
+            else alert('Error');
         } catch(error){
             console.log(error);
             alert('SignIn Failed!');
