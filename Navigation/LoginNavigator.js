@@ -7,10 +7,8 @@ import Name from "../SignIn/CreateAccount/Name";
 import School from "../SignIn/CreateAccount/School";
 import AccountCreation from "../SignIn/CreateAccount/AccountCreation";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import {NavigationContainer} from '@react-navigation/native';
 const Stack = createNativeStackNavigator();
 import {useAuth} from "../AuthContext";
-import LoadingScreen from "../SignIn/LoadingScreen";
 
 const NotLoggedInNavigator = () => {
 

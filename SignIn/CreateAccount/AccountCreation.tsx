@@ -1,21 +1,16 @@
 import {
-    ActivityIndicator,
-    Button,
-    KeyboardAvoidingView,
     Pressable,
     SafeAreaView,
     StyleSheet,
     TextInput,
     Text,
-    View, Keyboard, Platform
+    View
 } from 'react-native';
-import {StatusBar} from "expo-status-bar";
-import {ParamListBase, useFocusEffect, useNavigation} from "@react-navigation/native";
+import {ParamListBase, useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
-import React, {useState, useEffect, useCallback} from "react";
+import React, {useState} from "react";
 import {FIREBASE_AUTH} from "../../FireBaseConfig";
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, updateProfile} from "firebase/auth";
-import create = StyleSheet.create;
+import {createUserWithEmailAndPassword, sendEmailVerification} from "firebase/auth";
 
 
 const AccountCreation = () => {

@@ -4,6 +4,7 @@ import {FIREBASE_AUTH} from "./FireBaseConfig";
 
 const AuthContext = createContext(null);
 const auth = FIREBASE_AUTH;
+
 export function useAuth() {
     return useContext(AuthContext);
 }

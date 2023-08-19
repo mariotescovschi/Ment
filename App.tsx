@@ -6,8 +6,8 @@ const Stack = createNativeStackNavigator();
 import {AuthProvider, useAuth} from "./AuthContext";
 import LoginNavigator from "./Navigation/LoginNavigator";
 import AddFriends from "./SignIn/AddFriends";
-const AuthContext = React.createContext(null);
 export default function App(){
+    const AuthContext = React.createContext({});
         return (
             <AuthProvider>
             <NavigationContainer>

@@ -5,24 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c0abe1c-1360-4ab5-82cd-9b2d992079d3" name="Changes" comment="O sa mai schimb sa arate mai decent maine">
-      <change afterPath="$PROJECT_DIR$/AuthContext.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SignIn/CreateAccount/AccountData.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SignIn/LoadingScreen.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UserData.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/AccountSettings/FlagCountries/icon-romania.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Navigation/CreateAccountNavigator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/AuthContext.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Navigation/LoginNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/Navigation/LoginNavigator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignIn/CreateAcc.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignIn/CreateAccount/Name.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/CreateAccount/Name.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignIn/CreateAccount/School.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/CreateAccount/School.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignIn/Intro/Tutorial.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/Intro/Tutorial.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignIn/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firebase.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignIn/CreateAccount/AccountCreation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/CreateAccount/AccountCreation.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +36,7 @@
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="25b4edb4-b03d-4969-abb4-259c03df0080" />
+        <option name="accountId" value="4ae11206-ecb0-49f8-9872-52b847145097" />
         <option name="url" value="https://github.com/mariotescovschi/Ment.git" />
       </UrlAndAccount>
     </option>
@@ -72,22 +59,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "/Users/tescovschimario/WebstormProjects/Mentoid/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/tescovschimario/WebstormProjects/Mentoid/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/assets/AccountSettings/FlagCountries" />
