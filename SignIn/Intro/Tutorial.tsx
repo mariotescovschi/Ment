@@ -37,8 +37,6 @@ const CustomText = (props) => {
 
 
 const Tutorial = () => {
-    console.log(theUser.isLoggedIn);
-    console.log(theUser.email);
 
     const buttonName = ['Continuă', 'Continuă', 'Loghează-te'];
 

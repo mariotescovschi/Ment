@@ -5,10 +5,10 @@ import Home from "../Home";
 import {FIREBASE_AUTH} from "../FireBaseConfig";
 import {NavigationContainer, ParamListBase, useNavigation} from "@react-navigation/native";
 
-const auth = FIREBASE_AUTH;
-const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
 
 const LoadingScreen = () => {
+    const auth = FIREBASE_AUTH;
+    const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
 
     return (
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>

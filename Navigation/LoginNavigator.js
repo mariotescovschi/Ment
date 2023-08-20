@@ -9,6 +9,7 @@ import AccountCreation from "../SignIn/CreateAccount/AccountCreation";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
 import {useAuth} from "../AuthContext";
+import LoadingScreen from "../SignIn/LoadingScreen";
 
 const NotLoggedInNavigator = () => {
 
@@ -20,7 +21,7 @@ const NotLoggedInNavigator = () => {
             setIsLoggedIn} = useAuth();
 
     return (
-        <Stack.Navigator>
+        <Stack.Navigator initialRouteName={'LoadingScreen'}>
             {isLoggedIn ? (
                 <>
                     <Stack.Screen name='Home' component={Home} options={{headerShown: false}}/>
