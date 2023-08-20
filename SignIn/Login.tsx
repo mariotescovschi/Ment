@@ -12,7 +12,7 @@ import {ParamListBase, useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import React, {useState} from "react";
 import {FIREBASE_AUTH} from '../FireBaseConfig';
-import {signInWithEmailAndPassword} from 'firebase/auth';
+import {signInWithEmailAndPassword, sendPasswordResetEmail} from 'firebase/auth';
 import CustomText from "../assets/CustomText";
 import {useAuth} from "../AuthContext";
 
@@ -78,7 +78,7 @@ const Login = () => {
                 </View>
                 {/* Reset password */}
                 <View style={style.forgotPassword}>
-                    <Pressable onPress={() => alert('cucu mic')} style={{}}>
+                    <Pressable onPress={() => {sendPasswordResetEmail(auth, email), alert('Nu poti sa tii minte o parola?')}} style={{}}>
                         <Text style={{color: 'grey', fontSize: 16}}>Am uitat parola</Text>
                     </Pressable>
                 </View>

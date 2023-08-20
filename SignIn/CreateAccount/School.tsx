@@ -12,7 +12,7 @@ import {
 import {StatusBar} from "expo-status-bar";
 import {ParamListBase, useFocusEffect, useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
-import React, {useState, useEffect, useCallback} from "react";
+import React, {useState, useEffect, useCallbackpop} from "react";
 import CustomText from "../../assets/CustomText";
 import {SelectList} from 'react-native-dropdown-select-list';
 import Countries from "./AccountData.js";
