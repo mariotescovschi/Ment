@@ -37,7 +37,6 @@ const CustomText = (props) => {
 
 
 const Tutorial = () => {
-
     const buttonName = ['Continuă', 'Continuă', 'Loghează-te'];
 
     //For the skip button
@@ -46,7 +45,6 @@ const Tutorial = () => {
     //To know which slide is currently displayed
     const [currentIndex, setCurrentIndex] = useState(0);
     const scrollX = useRef(new Animated.Value(0)).current;
-
     //To know when the user has scrolled to the next slide
     const viewableItemsChanged = useRef(({ viewableItems }) => {
         setCurrentIndex(viewableItems[0].index);
@@ -87,8 +85,6 @@ const Tutorial = () => {
                 <View style={style.button} >
                     {currentIndex < slides.length - 1 ? showSkip() : null}
                     </View>
-
-
             </View>
 
             <View style={style.content}>

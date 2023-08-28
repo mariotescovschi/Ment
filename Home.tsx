@@ -4,7 +4,7 @@ import {FIREBASE_AUTH} from "./FireBaseConfig";
 import {signOut} from "firebase/auth";
 import {ParamListBase, useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
-import {useAuth} from "./AuthContext";
+import {useAuth} from "./SignIn/CreateAccount/AuthContext";
 const auth = FIREBASE_AUTH;
 
 

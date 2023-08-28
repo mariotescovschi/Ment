@@ -1,18 +1,18 @@
 import {StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import React from "react";
-const Stack = createNativeStackNavigator();
-import {AuthProvider, useAuth} from "./AuthContext";
+import {AuthProvider, useAuth} from "./SignIn/CreateAccount/AuthContext";
 import LoginNavigator from "./Navigation/LoginNavigator";
-import AddFriends from "./SignIn/AddFriends";
+import {CustomDropdownProvider} from "./SignIn/CreateAccount/AccountData/DropdownContext";
 export default function App(){
     const AuthContext = React.createContext({});
         return (
             <AuthProvider>
+                <CustomDropdownProvider>
             <NavigationContainer>
                 <LoginNavigator/>
             </NavigationContainer>
+                </CustomDropdownProvider>
             </AuthProvider>
         );
 }

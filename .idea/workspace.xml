@@ -4,10 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c0abe1c-1360-4ab5-82cd-9b2d992079d3" name="Changes" comment="O sa mai schimb sa arate mai decent maine">
+    <list default="true" id="1c0abe1c-1360-4ab5-82cd-9b2d992079d3" name="Changes" comment="bag coiu-ntr-un react">
+      <change afterPath="$PROJECT_DIR$/Countries.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CountryDropdown.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DropdownContext.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SchoolDropdown.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SignIn/Country.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZoneDropdown.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/AccountSettings/FlagCountries/icon-austria.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/AccountSettings/FlagCountries/icon-belgium.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/AccountSettings/FlagCountries/icon-czech-republic.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/AccountSettings/FlagCountries/icon-france.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/AccountSettings/FlagCountries/icon-germany.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/AccountSettings/FlagCountries/icon-great-britain.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/AccountSettings/FlagCountries/icon-netherlands.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/AccountSettings/FlagCountries/icon-none.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/AccountSettings/FlagCountries/icon-spain.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/icons8-down-button-64.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignIn/CreateAccount/School.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/CreateAccount/School.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AuthContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/CreateAccount/AuthContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Navigation/LoginNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/Navigation/LoginNavigator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignIn/CreateAccount/AccountData.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignIn/CreateAccount/Name.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/CreateAccount/Name.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignIn/CreateAccount/School.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignIn/Intro/Tutorial.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/Intro/Tutorial.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignIn/LoadingScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/LoadingScreen.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SignIn/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
@@ -59,26 +84,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "/Users/vasilegeorge/WebstormProjects/Ment/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/tescovschimario/WebstormProjects/Mentoid&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/tescovschimario/WebstormProjects/Mentoid/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/assets/AccountSettings/FlagCountries" />
       <recent name="$PROJECT_DIR$/SignIn/CreateAccount" />
+      <recent name="$PROJECT_DIR$/assets/AccountSettings/FlagCountries" />
       <recent name="$PROJECT_DIR$/assets" />
       <recent name="$PROJECT_DIR$/SignIn" />
       <recent name="$PROJECT_DIR$/SignIn/Intro" />
@@ -110,6 +139,15 @@
       <workItem from="1692432160670" duration="9931000" />
       <workItem from="1692442938519" duration="2723000" />
       <workItem from="1692450475384" duration="18135000" />
+      <workItem from="1692619184310" duration="615000" />
+      <workItem from="1692823126278" duration="3000" />
+      <workItem from="1692947887172" duration="4439000" />
+      <workItem from="1693063274743" duration="11324000" />
+      <workItem from="1693126475551" duration="35509000" />
+      <workItem from="1693210031493" duration="7614000" />
+      <workItem from="1693233495065" duration="125000" />
+      <workItem from="1693237513327" duration="12007000" />
+      <workItem from="1693258279076" duration="2228000" />
     </task>
     <task id="LOCAL-00001" summary="pressable + continue">
       <option name="closed" value="true" />

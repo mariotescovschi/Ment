@@ -14,7 +14,7 @@ import React, {useState} from "react";
 import {FIREBASE_AUTH} from '../FireBaseConfig';
 import {signInWithEmailAndPassword, sendPasswordResetEmail} from 'firebase/auth';
 import CustomText from "../assets/CustomText";
-import {useAuth} from "../AuthContext";
+import {useAuth} from "./CreateAccount/AuthContext";
 
 const Login = () => {
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
