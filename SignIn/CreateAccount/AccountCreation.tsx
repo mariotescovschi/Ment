@@ -11,6 +11,8 @@ import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import React, {useState} from "react";
 import {FIREBASE_AUTH} from "../../FireBaseConfig";
 import {createUserWithEmailAndPassword, sendEmailVerification} from "firebase/auth";
+import {useCustomDropdownContext} from "./AccountData/DropdownContext";
+import {useContinueContext} from "./ContinueContext";
 
 
 const AccountCreation = () => {
@@ -18,6 +20,9 @@ const AccountCreation = () => {
     const [email, setEmail] = useState('');
     const [loading, setLoading] = useState(false);
     const [password, setPassword] = useState('');
+    const {currentSchool, currentZone, currentGrade, currentCountry} = useCustomDropdownContext();
+    const {name, lastName} = useContinueContext();
+
     const auth= FIREBASE_AUTH;
 
     const signUp = async() =>{
@@ -25,7 +30,7 @@ const AccountCreation = () => {
         try{
             const response = await createUserWithEmailAndPassword(auth, email, password);
             console.log(response);
-            const user=auth.currentUser;
+            const user= auth.currentUser;
             await sendEmailVerification(user);
             alert('Check your emails');
 

@@ -4,21 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c0abe1c-1360-4ab5-82cd-9b2d992079d3" name="Changes" comment="1. Am curatat toata mizeria pe care o facusem adineauri.&#10;&#10;2. Am facut cam 80% din salvarea tarii, judetului, scolii si anul. Mai trebuie adaugate scolile per se, trimise datele in Firebase si sa mearga butonul de continue doar cand are toate datele.&#10;&#10;2b. eventual mai pot fi adaugate un paginator/slider sa se vada ca la clasa trebuie dat scroll si poate schimbat ceva daca n-arata bine">
-      <change afterPath="$PROJECT_DIR$/Navigation/HomeTab.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SignIn/CreateAccount/ContinueContext.tsx" afterDir="false" />
+    <list default="true" id="1c0abe1c-1360-4ab5-82cd-9b2d992079d3" name="Changes" comment="caca maca">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Navigation/LoginNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/Navigation/LoginNavigator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SignIn/CreateAccount/AccountCreation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/CreateAccount/AccountCreation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignIn/CreateAccount/AccountData/Country.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/CreateAccount/AccountData/Country.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignIn/CreateAccount/AccountData/DropdownContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/CreateAccount/AccountData/DropdownContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignIn/CreateAccount/AccountData/SchoolDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/CreateAccount/AccountData/SchoolDropdown.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignIn/CreateAccount/Name.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/CreateAccount/Name.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignIn/Intro/Tutorial.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/Intro/Tutorial.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignIn/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignIn/CreateAccount/AccountData/Countries.js" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/CreateAccount/AccountData/Countries.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignIn/CreateAccount/AuthContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/CreateAccount/AuthContext.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,6 +137,7 @@
       <workItem from="1697117423659" duration="259000" />
       <workItem from="1697118679191" duration="598000" />
       <workItem from="1697530633511" duration="78000" />
+      <workItem from="1697530730649" duration="1839000" />
     </task>
     <task id="LOCAL-00001" summary="pressable + continue">
       <option name="closed" value="true" />
@@ -228,7 +219,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693261057537</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="caca maca">
+      <option name="closed" value="true" />
+      <created>1697530850199</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1697530850199</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,6 +253,7 @@
     <MESSAGE value="Modificat locurile fisierelor&#10;Facut skipButton sa dispara pe ultimu slide" />
     <MESSAGE value="O sa mai schimb sa arate mai decent maine" />
     <MESSAGE value="1. Am curatat toata mizeria pe care o facusem adineauri.&#10;&#10;2. Am facut cam 80% din salvarea tarii, judetului, scolii si anul. Mai trebuie adaugate scolile per se, trimise datele in Firebase si sa mearga butonul de continue doar cand are toate datele.&#10;&#10;2b. eventual mai pot fi adaugate un paginator/slider sa se vada ca la clasa trebuie dat scroll si poate schimbat ceva daca n-arata bine" />
-    <option name="LAST_COMMIT_MESSAGE" value="1. Am curatat toata mizeria pe care o facusem adineauri.&#10;&#10;2. Am facut cam 80% din salvarea tarii, judetului, scolii si anul. Mai trebuie adaugate scolile per se, trimise datele in Firebase si sa mearga butonul de continue doar cand are toate datele.&#10;&#10;2b. eventual mai pot fi adaugate un paginator/slider sa se vada ca la clasa trebuie dat scroll si poate schimbat ceva daca n-arata bine" />
+    <MESSAGE value="caca maca" />
+    <option name="LAST_COMMIT_MESSAGE" value="caca maca" />
   </component>
 </project>

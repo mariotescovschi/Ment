@@ -33,7 +33,7 @@ const Countries = [
                     {id: 5, name: "COLEGIUL TEHNlC \"I. D. LAZARESCU\" CUGIR"},
                     {id: 6, name: "COLEGIUL TEHNIC AIUD"},
                     {id: 7, name: "LICEUL \"CORNELIO MEDREA\" ZLATNA"},
-                    {id: 8, name: "LICE UL \"DR. LAZAR CHIRILA;' BAlA DE ARIES"},
+                    {id: 8, name: "LICEUL \"DR. LAZAR CHIRILA;' BAlA DE ARIES"},
                     {id: 9, name: "LICEUL \"HOREA, CLOSCA SI CRISAN\" ABRUD"},
                     {id: 10, name: "LICEUL CU PROGRAM SPORTIV ALBA IULIA"},
                     {id: 11, name: "LICEUL CU PROGRAM SPORTIV SEBES"},

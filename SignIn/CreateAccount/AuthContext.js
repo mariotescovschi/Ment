@@ -16,7 +16,7 @@ const [loading, setLoading] = useState(false);
     useEffect(() => {
         setLoading(true);
         return onAuthStateChanged(auth, (user) => {
-            if(user) {
+            if(user && user.emailVerified) {
                 setAuthUser(user);
                 setIsLoggedIn(true);
             }
