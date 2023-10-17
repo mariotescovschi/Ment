@@ -6,7 +6,6 @@ import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import slides from "./slides";
 import TutorialItem from "./TutorialItem";
 import Paginator from "./Paginator";
-import theUser from "../../UserData";
 
 //Text with AsapCondensed font
 const CustomText = (props) => {
@@ -66,7 +65,7 @@ const Tutorial = () => {
     //To show the skip button
     const showSkip = () => {
             return(
-                    <Pressable onPress={() => navigation.navigate('Login')}>
+                    <Pressable onPress={() => navigation.replace('Login')}>
                         <Text style={style.skipButton}> Sari peste </Text>
                     </Pressable>
             )

@@ -18,6 +18,7 @@ import SchoolDropdown from "./SchoolDropdown";
 const Country = () => {
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
     const {currentSchool, currentZone,
+        currentGrade,
         setCurrentGrade, currentCountry,
         setIsOpenCountry, setIsOpenClass, setIsOpenGrade,
         setIsOpenZone, setIsOpenSchool
@@ -46,8 +47,8 @@ const Country = () => {
         <SafeAreaView style={style.page}>
 
             <View style={{flex: 20, justifyContent: 'flex-start'}}>
-                <View style={{marginTop:'10%', marginBottom: '10%'}}>
-                <Text style={{color: 'white', fontSize: 26, marginHorizontal: 5, }}>
+                <View style={{marginTop:'8%', marginBottom: '8%'}}>
+                <Text style={{color: 'white', fontSize: 28, marginHorizontal: '5%', }}>
                     De unde esti?
                 </Text>
                 </View>
@@ -115,17 +116,23 @@ const Country = () => {
             </View>
 
             </View>
-            <KeyboardAvoidingView
-                behavior={Platform.OS === "ios" ? "padding" : "height"}
+            <View
                 style={{flex: 3, justifyContent:'flex-end'}}>
-                <Pressable
-                    onPress={
-                        () => navigation.navigate('AccountCreation')
-                    }
-                    style={style.button}>
-                    <Text style={style.buttonText}>Continua</Text>
-                </Pressable>
-            </KeyboardAvoidingView>
+                {
+                    currentCountry !== Countries[0] && currentZone !== Countries[0].zones[0] && currentSchool !== Countries[0].zones[0].schools[0] && currentGrade !== 0 ?
+                        <Pressable
+                            onPress={() => navigation.navigate('AccountCreation')}
+                            style={[style.button, {backgroundColor: 'white'} ]}>
+                            <Text style={style.buttonText}>Continua</Text>
+                        </Pressable>
+                        :
+                        <Pressable
+                            onPress={() => navigation.goBack()}
+                            style={[style.button, {backgroundColor: 'grey', borderColor: 'black'}]}>
+                            <Text style={style.buttonText}>Înapoi</Text>
+                        </Pressable>
+                }
+            </View>
         </SafeAreaView>
             </TouchableWithoutFeedback>
 

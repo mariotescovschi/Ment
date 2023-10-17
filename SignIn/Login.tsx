@@ -33,10 +33,12 @@ const Login = () => {
         try{
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
+
             if (user.emailVerified)
                 setIsLoggedIn(true);
 
-            else alert('Error');
+            else
+                alert('Error');
         }
         catch(error){
             console.log(error);

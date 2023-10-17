@@ -5,17 +5,22 @@ import {
     StyleSheet,
     TextInput,
     Text,
-    View, Platform
+    View, Platform, TouchableWithoutFeedback, Keyboard
 } from 'react-native';
 import {ParamListBase, useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import React, {useState,} from "react";
+import {useContinueContext} from "./ContinueContext";
 
 const Name = () => {
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
+    const {name, setName, lastName, setLastName} = useContinueContext();
+
     return (
+        <TouchableWithoutFeedback
+            onPress={() => {
+                Keyboard.dismiss();
+            }}>
         <SafeAreaView style={style.page}>
             <View style={style.inputView}>
                 <View style={{marginTop: '10%', marginBottom: '2%', marginLeft: '5%'}}>
@@ -30,12 +35,12 @@ const Name = () => {
 
                 {/*First name input>*/}
             <TextInput
-                value={firstName}
+                value={name}
                 style={[style.input, {marginTop: '6%'}]}
                 autoCapitalize="none"
                 placeholder="Prenume"
                 placeholderTextColor="#696969"
-                onChangeText={(text) => setFirstName(text)}/>
+                onChangeText={(text) => setName(text)}/>
 
 
                 {/*Last name input>*/}
@@ -50,17 +55,26 @@ const Name = () => {
 
 
 
-            <KeyboardAvoidingView
-                behavior={Platform.OS === "ios" ? "padding" : "height"}
+            <View
+               
                 style={{flex: 3, justifyContent:'flex-end'}}>
-                <Pressable
-                    onPress={() => navigation.navigate('Country', {firstName: firstName, lastName: lastName})}
-                    style={style.button}>
-                    <Text style={style.buttonText}>Continua</Text>
-                </Pressable>
-                </KeyboardAvoidingView>
+                {
+                    name !== '' && lastName !== '' ?
+                    <Pressable
+                        onPress={() => navigation.navigate('Country')}
+                        style={[style.button, {backgroundColor: 'white'} ]}>
+                        <Text style={style.buttonText}>Continua</Text>
+                    </Pressable>
+                        :
+                        <Pressable
+                            onPress={() => navigation.goBack()}
+                            style={[style.button, {backgroundColor: 'grey', borderColor: 'black'}]}>
+                            <Text style={style.buttonText}>Înapoi</Text>
+                        </Pressable>
+                }
+                </View>
         </SafeAreaView>
-
+        </TouchableWithoutFeedback>
     );
 }
 

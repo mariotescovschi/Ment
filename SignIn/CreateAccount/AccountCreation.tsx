@@ -4,7 +4,7 @@ import {
     StyleSheet,
     TextInput,
     Text,
-    View
+    View, TouchableWithoutFeedback, Keyboard
 } from 'react-native';
 import {ParamListBase, useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
@@ -28,6 +28,7 @@ const AccountCreation = () => {
             const user=auth.currentUser;
             await sendEmailVerification(user);
             alert('Check your emails');
+
         } catch(error){
             console.log(error);
             alert('Deja ai cont boule');
@@ -36,22 +37,40 @@ const AccountCreation = () => {
         }
     }
     return (
+        <TouchableWithoutFeedback
+            onPress={() => {
+            Keyboard.dismiss();
+        }}>
         <SafeAreaView style={style.page}>
             <View style={style.inputView}>
-                <TextInput value={email} style={style.input} autoCapitalize="none" placeholder="Email" placeholderTextColor="white" onChangeText={(text) => setEmail(text)}/>
-                <TextInput secureTextEntry={true} value={password} style={style.input} autoCapitalize="none" placeholder='Parola' placeholderTextColor="white" onChangeText={(text) => setPassword(text)}/>
+                <Text style={{color: 'white', fontSize: 26, marginHorizontal: '5%', marginTop: '8%', marginBottom: '8%', textAlign: 'center'}}>
+                    Seteaza adresa de email si parola</Text>
+                <TextInput value={email} style={style.input} autoCapitalize="none" placeholder="Email" placeholderTextColor="grey" onChangeText={(text) => setEmail(text)}/>
+                <TextInput secureTextEntry={true} value={password} style={style.input} autoCapitalize="none" placeholder='Parola' placeholderTextColor="grey" onChangeText={(text) => setPassword(text)}/>
             </View>
-            <View style={style.loginButton}>
-            <Pressable
-                onPress={() =>
-                    signUp()}
-                
-                style={style.button}>
-                <Text style={style.buttonText}>Inregistreaza-te</Text>
-            </Pressable>
-                </View>
-        </SafeAreaView>
+            <View
 
+                style={{flex: 3, justifyContent:'flex-end'}}>
+                {
+                    email !== '' && password !== '' ?
+                        <Pressable
+                            onPress={() => {
+                                signUp();
+                                navigation.navigate('Login');}}
+                            style={[style.button, {backgroundColor: 'white'} ]}>
+                            <Text style={style.buttonText}>Inregistreaza-te</Text>
+                        </Pressable>
+                        :
+                        <Pressable
+                            onPress={() => navigation.goBack()}
+                            style={[style.button, {backgroundColor: 'grey', borderColor: 'black'}]}>
+                            <Text style={style.buttonText}>Înapoi</Text>
+                        </Pressable>
+                }
+            </View>
+
+        </SafeAreaView>
+    </TouchableWithoutFeedback>
     );
 }
 
@@ -93,7 +112,6 @@ const style = StyleSheet.create({
 
         inputView: {
             flex: 5,
-            justifyContent: 'center',
         },
 
         loginButton: {

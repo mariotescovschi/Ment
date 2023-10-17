@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState } from 'react';
-import Null from "./Null";
 import Countries from "./Countries";
 interface Option {
     id: number;

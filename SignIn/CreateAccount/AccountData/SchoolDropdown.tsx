@@ -90,7 +90,7 @@ const SchoolDropdown = ({ options }: CustomDropdownProps) => {
                         onPressIn={toggleDropdown}
                         onChangeText={(text) => setSearchQuerySchool(text)}
                         value={searchQuerySchool}
-                        style={{color: 'white', fontSize: 16, flex: 1, textAlign:  'center'}}
+                        style={{color: 'white', fontSize: 16, flex: 1, textAlign:  'center', marginHorizontal: 5}}
                         onKeyPress={handleKeyPress}
                     />
                 </View>
