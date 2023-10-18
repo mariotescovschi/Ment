@@ -1,15 +1,14 @@
 import {
-    KeyboardAvoidingView,
     Pressable,
     SafeAreaView,
     StyleSheet,
     TextInput,
     Text,
-    View, Platform, TouchableWithoutFeedback, Keyboard
+    View, TouchableWithoutFeedback, Keyboard
 } from 'react-native';
 import {ParamListBase, useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
-import React, {useState,} from "react";
+import React from "react";
 import {useContinueContext} from "./ContinueContext";
 
 const Name = () => {

@@ -90,8 +90,7 @@ const Login = () => {
                 </View>
             </View>
 
-            <KeyboardAvoidingView
-                behavior={Platform.OS === "ios" ? "padding" : "height"}
+            <View
                 style={style.loginButton}>
                 {loading ?
                     (<ActivityIndicator size="large" color="#fff"/>
@@ -105,7 +104,7 @@ const Login = () => {
                     )
                 }
 
-            </KeyboardAvoidingView>
+            </View>
         </SafeAreaView>
     );
 }

@@ -2,7 +2,7 @@ import {
     Animated,
     FlatList,
     Keyboard,
-    KeyboardAvoidingView, Platform, Pressable,
+    Pressable,
     SafeAreaView,
     StyleSheet, Text, TouchableWithoutFeedback,
     View

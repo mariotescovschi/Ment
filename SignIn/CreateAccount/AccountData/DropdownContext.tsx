@@ -1,25 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 import Countries from "./Countries";
-interface Option {
-    id: number;
-    name: string;
-}
 
-type Zone = {
-    id: number;
-    name: string;
-    schools?: {
-        id: number;
-        name: string;
-    }[];
-};
-
-type Country = {
-    id: number;
-    name: string;
-    image: any;
-    zones?: Zone[];
-}
 interface CustomDropdownContextProps {
     isOpenCountry: boolean;
     setIsOpenCountry: React.Dispatch<React.SetStateAction<boolean>>;

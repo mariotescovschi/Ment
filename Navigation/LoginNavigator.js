@@ -1,31 +1,25 @@
 import Tutorial from "../SignIn/Intro/Tutorial";
 import Login from "../SignIn/Login";
 import React from "react";
-import Home from "../Home";
 import Name from "../SignIn/CreateAccount/Name";
 import AccountCreation from "../SignIn/CreateAccount/AccountCreation";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {useAuth} from "../SignIn/CreateAccount/AuthContext";
 import Country from "../SignIn/CreateAccount/AccountData/Country";
-import LoadingScreen from "../SignIn/LoadingScreen";
+import HomeTab from "./HomeTab";
 
 const Stack = createNativeStackNavigator();
 
 const NotLoggedInNavigator = () => {
-
-
-    const value =
-        {   authUser,
-            setAuthUser,
-            isLoggedIn,
-            setIsLoggedIn} = useAuth();
+    const {isLoggedIn} = useAuth();
 
     return (
         <Stack.Navigator initialRouteName={'LoadingScreen'}>
             {
                 isLoggedIn ? (
                         <>
-                            <Stack.Screen name='Home' component={Home} options={{headerShown: false}}/>
+                            <Stack.Screen name='HomeTab' component={HomeTab} options={{headerShown: false}}/>
+
                         </>
                     ) : (
                         <>

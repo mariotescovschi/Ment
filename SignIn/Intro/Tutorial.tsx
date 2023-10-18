@@ -1,39 +1,11 @@
-import {Platform, SafeAreaView, StyleSheet, Text, View, StatusBar, Pressable, Animated, FlatList,} from 'react-native';
-import * as Font from 'expo-font';
+import { SafeAreaView, StyleSheet, Text, View, StatusBar, Pressable, Animated, FlatList,} from 'react-native';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
-import React, {useEffect, useState, useRef} from "react";
+import React, {useState, useRef} from "react";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import slides from "./slides";
 import TutorialItem from "./TutorialItem";
 import Paginator from "./Paginator";
-
-//Text with AsapCondensed font
-const CustomText = (props) => {
-    const [fontLoaded, setFontLoaded] = useState(false);
-
-    useEffect(() => {
-        async function loadFont() {
-            await Font.loadAsync({
-                'AsapCondensed': require('../../assets/fonts/AsapCondensed-Black.ttf'),
-            });
-
-            setFontLoaded(true);
-        }
-
-        loadFont();
-    }, []);
-
-    if (!fontLoaded) {
-        return <Text>Loading...</Text>;
-    }
-
-    return (
-        <Text style={{ ...props.style, fontFamily: 'AsapCondensed' }}>
-            {props.children}
-        </Text>
-    );
-};
-
+import CustomText from "../../assets/CustomText";
 
 const Tutorial = () => {
     const buttonName = ['Continuă', 'Continuă', 'Loghează-te'];
