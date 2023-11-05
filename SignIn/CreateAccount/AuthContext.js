@@ -1,9 +1,9 @@
 import React, {useState, useEffect, createContext, useContext} from 'react';
-import {onAuthStateChanged} from "firebase/auth";
-import {FIREBASE_AUTH} from "../../FireBaseConfig";
+import {onAuthStateChanged, initializeAuth, getReactNativePersistence} from "firebase/auth";
+import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
+import {FIREBASE_APP, FIREBASE_AUTH} from "../../FireBaseConfig";
 
 const AuthContext = createContext(null);
-const auth = FIREBASE_AUTH;
 
 export function useAuth() {
     return useContext(AuthContext);
@@ -13,6 +13,7 @@ export function AuthProvider(props) {
 const [authUser, setAuthUser] = useState(null);
 const [isLoggedIn, setIsLoggedIn] = useState(false);
 const [loading, setLoading] = useState(false);
+const auth = FIREBASE_AUTH;
     useEffect(() => {
         setLoading(true);
         return onAuthStateChanged(auth, (user) => {

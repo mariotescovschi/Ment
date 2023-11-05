@@ -1,12 +1,11 @@
 import {
     ActivityIndicator,
-    KeyboardAvoidingView,
     Pressable,
     SafeAreaView,
     StyleSheet,
     TextInput,
     Text,
-    View, Keyboard, Platform
+    View, Keyboard,
 } from 'react-native';
 import {ParamListBase, useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
@@ -21,7 +20,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [loading, setLoading] = useState(false);
     const [password, setPassword] = useState('');
-    const auth= FIREBASE_AUTH;
+    const auth = FIREBASE_AUTH;
     const {
         authUser,
         setAuthUser,

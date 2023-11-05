@@ -1,24 +1,29 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth } from "firebase/auth";
-import {getFirestore} from 'firebase/firestore';
+import {getAuth, getReactNativePersistence, initializeAuth} from "firebase/auth";
+import { getDatabase} from "firebase/database";
+import { getStorage } from "firebase/storage";
+import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
+import { getFirestore } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyBtoh709rs6fuS8Pk8iOc-ADZGhoG7PVWY",
-    authDomain: "mentt-a96e5.firebaseapp.com",
-    projectId: "mentt-a96e5",
-    storageBucket: "mentt-a96e5.appspot.com",
-    messagingSenderId: "171757447039",
-    appId: "1:171757447039:web:31e2b778140b8482aadc4a",
-    measurementId: "G-36ZT99JVVE"
+    apiKey: "AIzaSyBKJlatnpZzb1kkQsknGJOqWc8t1dgV8KM",
+    authDomain: "ment-a41c7.firebaseapp.com",
+    projectId: "ment-a41c7",
+    storageBucket: "gs://ment-a41c7.appspot.com",
+    messagingSenderId: "496832958894",
+    appId: "1:496832958894:web:9c0166251e775170db783f",
+    measurementId: "G-M402CPNQSG",
+    databaseURL: "https://ment-a41c7-default-rtdb.europe-west1.firebasedatabase.app/",
 };
 
 // Initialize Firebase
 export const FIREBASE_APP = initializeApp(firebaseConfig);
-export const FIREBASE_AUTH = getAuth(FIREBASE_APP);
+export const FIREBASE_AUTH = initializeAuth(FIREBASE_APP, {
+    persistence: getReactNativePersistence(ReactNativeAsyncStorage),
+   });
 export const FIRESTORE_DB = getFirestore(FIREBASE_APP);
+
+export const FIREBASE_STORAGE = getStorage();

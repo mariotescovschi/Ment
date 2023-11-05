@@ -3,8 +3,8 @@ import {ParamListBase, useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import CustomText from "../assets/CustomText";
 import React from "react";
-
-
+import {FIREBASE_STORAGE} from "../FireBaseConfig";
+import {ref} from "firebase/storage";
 const Home = () => {
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
 

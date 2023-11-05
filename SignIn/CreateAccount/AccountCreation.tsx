@@ -9,11 +9,11 @@ import {
 import {ParamListBase, useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import React, {useState} from "react";
-import {FIREBASE_AUTH} from "../../FireBaseConfig";
+import {FIREBASE_AUTH, FIRESTORE_DB} from "../../FireBaseConfig";
 import {createUserWithEmailAndPassword, sendEmailVerification} from "firebase/auth";
 import {useCustomDropdownContext} from "./AccountData/DropdownContext";
 import {useContinueContext} from "./ContinueContext";
-
+import {collection, addDoc, setDoc, doc} from "firebase/firestore";
 
 const AccountCreation = () => {
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
@@ -22,15 +22,25 @@ const AccountCreation = () => {
     const [password, setPassword] = useState('');
     const {currentSchool, currentZone, currentGrade, currentCountry} = useCustomDropdownContext();
     const {name, lastName} = useContinueContext();
-
-    const auth= FIREBASE_AUTH;
-
+    const auth = FIREBASE_AUTH;
+    const database = FIRESTORE_DB;
     const signUp = async() =>{
         setLoading(true);
         try{
             const response = await createUserWithEmailAndPassword(auth, email, password);
             console.log(response);
             const user= auth.currentUser;
+            if (user)
+                  await addDoc(collection(database, "groups", currentCountry.name, currentZone.name, currentSchool.name, currentGrade.toString()), {
+                     name: name,
+                     lastName: lastName,
+                     country: currentCountry.name,
+                     zone: currentZone.name,
+                     school: currentSchool.name,
+                     grade: currentGrade,
+                     score: 0,
+                     profilePicture: "gs://ment-a41c7.appspot.com/ProfilePictures/icons8-customer-50.png"
+                  });
             await sendEmailVerification(user);
             alert('Check your emails');
 
