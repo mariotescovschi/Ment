@@ -30,17 +30,23 @@ const AccountCreation = () => {
             const response = await createUserWithEmailAndPassword(auth, email, password);
             console.log(response);
             const user= auth.currentUser;
-            if (user)
-                  await addDoc(collection(database, "groups", currentCountry.name, currentZone.name, currentSchool.name, currentGrade.toString()), {
-                     name: name,
-                     lastName: lastName,
-                     country: currentCountry.name,
-                     zone: currentZone.name,
-                     school: currentSchool.name,
-                     grade: currentGrade,
-                     score: 0,
-                     profilePicture: "gs://ment-a41c7.appspot.com/ProfilePictures/icons8-customer-50.png"
-                  });
+            if (user) {
+               await setDoc(doc(database, "users", user.uid), {
+                  name: name,
+                  lastName: lastName,
+                  country: currentCountry.name,
+                  zone: currentZone.name,
+                  school: currentSchool.name,
+                  grade: currentGrade,
+                  photo: 'ProfilePictures/icons8-customer-50.png'
+               });
+
+               await setDoc(doc(database, "groups", currentCountry.name, currentZone.name, currentSchool.name, currentGrade.toString(), user.uid), {
+                  name: name,
+                  lastName: lastName,
+                  score: 0,
+               });
+            }
             await sendEmailVerification(user);
             alert('Check your emails');
 

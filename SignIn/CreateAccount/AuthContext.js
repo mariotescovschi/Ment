@@ -1,7 +1,10 @@
 import React, {useState, useEffect, createContext, useContext} from 'react';
 import {onAuthStateChanged, initializeAuth, getReactNativePersistence} from "firebase/auth";
 import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
-import {FIREBASE_APP, FIREBASE_AUTH} from "../../FireBaseConfig";
+import {FIREBASE_APP, FIREBASE_AUTH, FIRESTORE_DB} from "../../FireBaseConfig";
+import {doc, onSnapshot} from "firebase/firestore";
+import {MetadataProvider, useContextMetadata} from "../../MetadataContext";
+import {getStorage, ref, getDownloadURL} from "firebase/storage";
 
 const AuthContext = createContext(null);
 
@@ -10,16 +13,28 @@ export function useAuth() {
 }
 
 export function AuthProvider(props) {
+
 const [authUser, setAuthUser] = useState(null);
 const [isLoggedIn, setIsLoggedIn] = useState(false);
 const [loading, setLoading] = useState(false);
+const db = FIRESTORE_DB;
 const auth = FIREBASE_AUTH;
+const storage = getStorage();
+
+const {userName, setUserName, userPhoto, setUserPhoto} = useContextMetadata();
     useEffect(() => {
         setLoading(true);
         return onAuthStateChanged(auth, (user) => {
             if(user && user.emailVerified) {
                 setAuthUser(user);
                 setIsLoggedIn(true);
+                const unsub = onSnapshot(
+                    doc(db, "users", user.uid),
+                    { includeMetadataChanges: true },
+                    (doc) => {
+                         setUserName(doc.data().name + ' ' + doc.data().lastName);
+                    });
+                // setUserPhoto(ref(storage,'/profilePicture' + doc.data().photo));
             }
             else {
                 setAuthUser(null);
@@ -32,7 +47,8 @@ const value =
     {   authUser,
         setAuthUser,
         isLoggedIn,
-        setIsLoggedIn};
+        setIsLoggedIn,
+    };
 
 return (
     <AuthContext.Provider value={value}>

@@ -4,12 +4,12 @@
     "slug": "Ment",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/cacamaca.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/cacamaca.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -19,9 +19,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/cacamaca.png",
         "backgroundColor": "#ffffff"
-
       },
       "softwareKeyboardLayoutMode": "pan"
     },
@@ -38,6 +37,14 @@
     },
     "updates": {
       "url": "https://u.expo.dev/dee92455-3947-4994-a212-a2f4b5cf57c9"
-    }
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you share them with your friends."
+        }
+      ]
+    ]
   }
 }

@@ -4,17 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c0abe1c-1360-4ab5-82cd-9b2d992079d3" name="Changes" comment="Am mai facut ceva la home, curatat codul de erori inutile, schimbat loc la fisiere si foldere etc">
+    <list default="true" id="1c0abe1c-1360-4ab5-82cd-9b2d992079d3" name="Changes" comment="firestore cloud, chestii">
+      <change afterPath="$PROJECT_DIR$/MetadataContext.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/cacamaca.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FireBaseConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FireBaseConfig.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainFlow/AccountPage/Account.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/MainFlow/AccountPage/Account.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainFlow/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/MainFlow/Home.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SignIn/CreateAccount/AccountCreation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/CreateAccount/AccountCreation.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SignIn/CreateAccount/AccountData/Countries.js" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/CreateAccount/AccountData/Countries.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SignIn/CreateAccount/AuthContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/CreateAccount/AuthContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignIn/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,14 +73,14 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/tescovschimario/WebstormProjects/Ment&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/Users/tescovschimario/WebstormProjects/Ment/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -87,10 +90,10 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets" />
       <recent name="$PROJECT_DIR$/MainFlow/AccountPage/Settings" />
       <recent name="$PROJECT_DIR$/MainFlow/AccountPage" />
       <recent name="$PROJECT_DIR$/MainFlow" />
-      <recent name="$PROJECT_DIR$/assets" />
       <recent name="$PROJECT_DIR$/assets/HomeTabIcons" />
     </key>
   </component>
@@ -153,7 +156,35 @@
       <workItem from="1698322445197" duration="647000" />
       <workItem from="1698323758091" duration="704000" />
       <workItem from="1698518135738" duration="611000" />
-      <workItem from="1699181995016" duration="23432000" />
+      <workItem from="1699181995016" duration="24295000" />
+      <workItem from="1699258679360" duration="9496000" />
+      <workItem from="1699302868794" duration="5969000" />
+      <workItem from="1699351468727" duration="3084000" />
+      <workItem from="1699450453427" duration="153000" />
+      <workItem from="1699807045061" duration="2000" />
+      <workItem from="1699815014305" duration="814000" />
+      <workItem from="1699860403210" duration="7552000" />
+      <workItem from="1699877846035" duration="5427000" />
+      <workItem from="1699898819273" duration="4663000" />
+      <workItem from="1700146574477" duration="2000" />
+      <workItem from="1700742755519" duration="828000" />
+      <workItem from="1700744904972" duration="6032000" />
+      <workItem from="1700757066848" duration="2427000" />
+      <workItem from="1700839896577" duration="1197000" />
+      <workItem from="1700898350987" duration="597000" />
+      <workItem from="1701110933977" duration="598000" />
+      <workItem from="1701442241498" duration="37000" />
+      <workItem from="1701442286366" duration="121000" />
+      <workItem from="1701592965117" duration="2120000" />
+      <workItem from="1701606515159" duration="2052000" />
+      <workItem from="1701631842369" duration="673000" />
+      <workItem from="1701786848596" duration="4000" />
+      <workItem from="1701864322338" duration="3000" />
+      <workItem from="1701949827544" duration="3000" />
+      <workItem from="1701963378481" duration="133000" />
+      <workItem from="1702135679323" duration="8867000" />
+      <workItem from="1702144607467" duration="3053000" />
+      <workItem from="1702148335450" duration="6585000" />
     </task>
     <task id="LOCAL-00001" summary="pressable + continue">
       <option name="closed" value="true" />
@@ -251,7 +282,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697655666039</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="firestore cloud, chestii">
+      <option name="closed" value="true" />
+      <created>1699223060103</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1699223060104</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,6 +318,7 @@
     <MESSAGE value="1. Am curatat toata mizeria pe care o facusem adineauri.&#10;&#10;2. Am facut cam 80% din salvarea tarii, judetului, scolii si anul. Mai trebuie adaugate scolile per se, trimise datele in Firebase si sa mearga butonul de continue doar cand are toate datele.&#10;&#10;2b. eventual mai pot fi adaugate un paginator/slider sa se vada ca la clasa trebuie dat scroll si poate schimbat ceva daca n-arata bine" />
     <MESSAGE value="caca maca" />
     <MESSAGE value="Am mai facut ceva la home, curatat codul de erori inutile, schimbat loc la fisiere si foldere etc" />
-    <option name="LAST_COMMIT_MESSAGE" value="Am mai facut ceva la home, curatat codul de erori inutile, schimbat loc la fisiere si foldere etc" />
+    <MESSAGE value="firestore cloud, chestii" />
+    <option name="LAST_COMMIT_MESSAGE" value="firestore cloud, chestii" />
   </component>
 </project>

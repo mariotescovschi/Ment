@@ -1079,7 +1079,7 @@ const Countries = [
                     {id: 48, name: "LICEUL TEORETIC \"PARADIS\" IAȘI"},
                     {id: 49, name: "LICEUL TEORETIC DE INFORMATICĂ \"GRIGORE MOISIL\" IAŞI"},
                     {id: 50, name: "LICEUL TEORETIC WALDORF IAŞI"},
-                    {id: 51, name: "LICEUL TEORETIC „VARLAAM MITROPOLITUL” IAȘI"},
+                    {id: 51, name: "LICEUL TEORETIC \"VARLAAM MITROPOLITUL\" IAȘI"},
                     {id: 52, name: "LICEUL UNIVERSITĂȚII \"ALEXANDRU IOAN CUZA\" DIN IAȘI"},
                 ]
             },

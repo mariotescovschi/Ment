@@ -4,9 +4,16 @@ import {AuthProvider} from "./SignIn/CreateAccount/AuthContext";
 import LoginNavigator from "./Navigation/LoginNavigator";
 import {CustomDropdownProvider} from "./SignIn/CreateAccount/AccountData/DropdownContext";
 import {ContinueProvider} from "./SignIn/CreateAccount/ContinueContext";
-
+import * as SplashScreen from 'expo-splash-screen';
+import {MetadataProvider} from "./MetadataContext";
+import {initializeApp} from "firebase/app";
 export default function App(){
+
+   SplashScreen.preventAutoHideAsync();
+   setTimeout(SplashScreen.hideAsync, 5000);
+
         return (
+           <MetadataProvider>
             <AuthProvider>
                 <ContinueProvider>
                 <CustomDropdownProvider>
@@ -16,6 +23,7 @@ export default function App(){
                 </CustomDropdownProvider>
                 </ContinueProvider>
             </AuthProvider>
+           </MetadataProvider>
         );
 }
 

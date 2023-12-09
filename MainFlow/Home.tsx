@@ -2,11 +2,16 @@ import {Image, Pressable, SafeAreaView, StyleSheet, View} from 'react-native';
 import {ParamListBase, useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import CustomText from "../assets/CustomText";
-import React from "react";
-import {FIREBASE_STORAGE} from "../FireBaseConfig";
+import React, {useEffect, useState} from "react";
+import {FIREBASE_AUTH, FIREBASE_STORAGE} from "../FireBaseConfig";
 import {ref} from "firebase/storage";
+import {updateProfile} from "firebase/auth";
+import ImagePicker from "react-native-image-picker";
 const Home = () => {
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+    const[photoUrl, setPhotoUrl] = useState('/assets/profile_icon.png');
+    const currentUser = FIREBASE_AUTH.currentUser;
+
 
     return(
         <SafeAreaView style={style.page}>
@@ -21,16 +26,13 @@ const Home = () => {
                     <Pressable
                         onPress={() => navigation.navigate('Account')}>
                         {/*Aici trebuie sa fie poza de profil*/}
-                        <Image source={require('../assets/profile_icon.png')} style={{width: 30, height: 30}}/>
+                        <Image source={{uri: currentUser.photoURL}} style={{width: 30, height: 30}}/>
                     </Pressable>
                 </View>
 
                 </View>
             <View style={style.content}>
-
-                <View>
-
-                </View>
+               
             </View>
         </SafeAreaView>
     );
