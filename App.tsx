@@ -4,13 +4,12 @@ import {AuthProvider} from "./SignIn/CreateAccount/AuthContext";
 import LoginNavigator from "./Navigation/LoginNavigator";
 import {CustomDropdownProvider} from "./SignIn/CreateAccount/AccountData/DropdownContext";
 import {ContinueProvider} from "./SignIn/CreateAccount/ContinueContext";
-import * as SplashScreen from 'expo-splash-screen';
 import {MetadataProvider} from "./MetadataContext";
-import {initializeApp} from "firebase/app";
+import * as SplashScreen from 'expo-splash-screen';
 export default function App(){
 
-   SplashScreen.preventAutoHideAsync();
-   setTimeout(SplashScreen.hideAsync, 5000);
+    SplashScreen.preventAutoHideAsync();
+    setTimeout(SplashScreen.hideAsync, 2000);
 
         return (
            <MetadataProvider>

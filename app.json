@@ -8,8 +8,7 @@
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/cacamaca.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#000"
+      "resizeMode": "contain"
     },
     "assetBundlePatterns": [
       "**/*"

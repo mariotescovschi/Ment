@@ -54,8 +54,9 @@ const Login = () => {
             <View style={style.header}>
                 <View style={{width: '33%'}}/>
 
+                <View style={{width: '33%'}}>
                 <CustomText style = {style.title}> MENT </CustomText>
-
+                </View>
                 <View style={{width: '33%'}} />
             </View>
 
@@ -142,7 +143,6 @@ const style = StyleSheet.create({
         fontSize: 40,
         textAlign: 'center',
         alignSelf: 'center',
-        width: '33%',
     },
 
     button:{

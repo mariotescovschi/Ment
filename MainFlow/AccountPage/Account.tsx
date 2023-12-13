@@ -1,4 +1,4 @@
-import {Image, Platform, Pressable, SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {Pressable, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {ParamListBase, useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import React, {useState} from "react";
@@ -6,17 +6,31 @@ import {useContextMetadata} from "../../MetadataContext";
 import {FIREBASE_AUTH} from "../../FireBaseConfig";
 import {launchImageLibraryAsync, MediaTypeOptions} from "expo-image-picker";
 import {getDownloadURL, getStorage, ref, uploadBytesResumable, uploadBytes} from "firebase/storage";
+import {Image} from "expo-image";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import {updateProfile} from "firebase/auth";
+import {manipulateAsync, SaveFormat} from "expo-image-manipulator";
 
 const Account = () => {
+
+    const resizeImage = async (uri) => {
+        const resizedImage = await manipulateAsync(
+            uri,
+            [{ resize: { width: 800, height: 600 } }],
+            {compress: 0.8, format: SaveFormat.PNG }
+        );
+        return resizedImage.uri;
+    };
+
    const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
-   const {userName, userPhoto} = useContextMetadata();
+   const {userName, userPhoto, setUserPhoto} = useContextMetadata();
    const [image, setImage] = useState(null);
    const currentUser = FIREBASE_AUTH.currentUser;
    const [blob, setBlob] = useState(null);
    const uploadImage = async (uri: string) => {
        const startTime = performance.now();
 
-           const uriToBlobAndroid = (uri: string): Promise<Blob> => {
+           const uriToBlob = (uri: string): Promise<Blob> => {
                return new Promise((resolve, reject) => {
                    const xhr = new XMLHttpRequest();
                    xhr.onload = () => {
@@ -34,18 +48,7 @@ const Account = () => {
 
                });
            };
-           const uriToBlobIos = async (uri) => {
-           try {
-               const response = await fetch(uri);
-               const blob_aux = await response.blob();
-               return blob_aux;
-           } catch (error) {
-               throw new Error('uriToBlob failed: ' + error.message);
-           }
-       };
-
-           Platform.OS === "ios" ? setBlob(await uriToBlobIos(uri)) : setBlob(await uriToBlobAndroid(uri));
-
+         const blob = await uriToBlob(uri);
       //console.log(blob);
       const storageRef = ref(getStorage(), 'ProfilePictures/' + currentUser.uid);
       const uploadTask = uploadBytesResumable(storageRef, blob);
@@ -87,7 +90,12 @@ const Account = () => {
                // Upload completed successfully, now we can get the download URL
                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                    console.log('File available at', downloadURL);
-                   setImage(downloadURL);
+                   updateProfile(currentUser, {
+                          photoURL: downloadURL,
+                     }).then(() => {
+                     }).catch((error) => {
+                          console.log(error);
+                     });
                    const endTime = performance.now();
                    console.log('Upload took ' + (endTime - startTime) + ' ms');
                });
@@ -99,18 +107,19 @@ const Account = () => {
 
    const pickImage = async () => {
       const result = await launchImageLibraryAsync({
-         mediaTypes: MediaTypeOptions.All,
+         mediaTypes: MediaTypeOptions.Images,
          allowsEditing: true,
          aspect: [4, 3],
-         quality: 1,
+         quality: 0.8,
       });
 
       if(!result.canceled) {
-          setImage(result.assets[0].uri)
-          uploadImage(result.assets[0].uri);
+          const image = await resizeImage(result.assets[0].uri);
+          await uploadImage(image);
       }
-   }
 
+
+   }
 
    return(
         <SafeAreaView style={style.page}>
@@ -134,8 +143,9 @@ const Account = () => {
             </View>
             <View style={style.content}>
                <Pressable onPress={() => {pickImage()}}>
-                <Image source={{uri: image}}
-                       style={style.profilePicture}/>
+                <Image source = {{uri : currentUser.photoURL}}
+                       style={style.profilePicture}
+                       cachePolicy={"memory-disk"}/>
                </Pressable>
                 <Text style={style.userName}>
                    {userName}

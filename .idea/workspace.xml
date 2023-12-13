@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c0abe1c-1360-4ab5-82cd-9b2d992079d3" name="Changes" comment="firestore cloud, chestii">
-      <change afterPath="$PROJECT_DIR$/MetadataContext.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/cacamaca.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FireBaseConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FireBaseConfig.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainFlow/AccountPage/Account.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/MainFlow/AccountPage/Account.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainFlow/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/MainFlow/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignIn/CreateAccount/AccountCreation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/CreateAccount/AccountCreation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignIn/CreateAccount/AccountData/Countries.js" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/CreateAccount/AccountData/Countries.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SignIn/CreateAccount/AuthContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/CreateAccount/AuthContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignIn/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/Login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
@@ -73,7 +69,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/tescovschimario/WebstormProjects/Ment&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -81,7 +77,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/tescovschimario/WebstormProjects/Ment/node_modules/typescript/lib&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/tescovschimario/WebstormProjects/Ment_bun/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -185,6 +181,13 @@
       <workItem from="1702135679323" duration="8867000" />
       <workItem from="1702144607467" duration="3053000" />
       <workItem from="1702148335450" duration="6585000" />
+      <workItem from="1702290066837" duration="2461000" />
+      <workItem from="1702302958999" duration="675000" />
+      <workItem from="1702323860855" duration="713000" />
+      <workItem from="1702372091730" duration="599000" />
+      <workItem from="1702374543769" duration="1289000" />
+      <workItem from="1702399569299" duration="3342000" />
+      <workItem from="1702421422515" duration="5374000" />
     </task>
     <task id="LOCAL-00001" summary="pressable + continue">
       <option name="closed" value="true" />

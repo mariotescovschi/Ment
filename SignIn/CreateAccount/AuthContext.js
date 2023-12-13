@@ -5,6 +5,8 @@ import {FIREBASE_APP, FIREBASE_AUTH, FIRESTORE_DB} from "../../FireBaseConfig";
 import {doc, onSnapshot} from "firebase/firestore";
 import {MetadataProvider, useContextMetadata} from "../../MetadataContext";
 import {getStorage, ref, getDownloadURL} from "firebase/storage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import {Image} from "expo-image";
 
 const AuthContext = createContext(null);
 
@@ -22,7 +24,9 @@ const auth = FIREBASE_AUTH;
 const storage = getStorage();
 
 const {userName, setUserName, userPhoto, setUserPhoto} = useContextMetadata();
-    useEffect(() => {
+
+useEffect(() => {
+
         setLoading(true);
         return onAuthStateChanged(auth, (user) => {
             if(user && user.emailVerified) {
@@ -33,8 +37,11 @@ const {userName, setUserName, userPhoto, setUserPhoto} = useContextMetadata();
                     { includeMetadataChanges: true },
                     (doc) => {
                          setUserName(doc.data().name + ' ' + doc.data().lastName);
+
+
+                         Image.prefetch(user.photoURL);
                     });
-                // setUserPhoto(ref(storage,'/profilePicture' + doc.data().photo));
+
             }
             else {
                 setAuthUser(null);
