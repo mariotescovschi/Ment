@@ -13,7 +13,7 @@ import React, {useState} from "react";
 import {FIREBASE_AUTH} from '../FireBaseConfig';
 import {signInWithEmailAndPassword, sendPasswordResetEmail} from 'firebase/auth';
 import CustomText from "../assets/CustomText";
-import {useAuth} from "./CreateAccount/AuthContext";
+import {useContextMetadata} from "../MetadataContext";
 
 const Login = () => {
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
@@ -21,12 +21,8 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
     const [password, setPassword] = useState('');
     const auth = FIREBASE_AUTH;
-    const {
-        authUser,
-        setAuthUser,
-        isLoggedIn,
-        setIsLoggedIn,
-        } = useAuth();
+
+    const {setCurrentUser} = useContextMetadata();
     const signIn = async() =>{
         setLoading(true);
         try{
@@ -34,7 +30,7 @@ const Login = () => {
             const user = userCredential.user;
 
             if (user.emailVerified)
-                setIsLoggedIn(true);
+                setCurrentUser(user.uid);
 
             else
                 alert('Error');

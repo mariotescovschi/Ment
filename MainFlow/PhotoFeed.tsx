@@ -20,28 +20,46 @@ const PhotoFeed = () => {
 export default PhotoFeed;
 
 const style = StyleSheet.create({
-    page:{
+    page: {
         flex: 1,
         backgroundColor: '#000',
-        justifyContent: 'center',
-        alignItems: 'center',
     },
-    header:{
-        flex: 1,
+    header: {
         flexDirection: 'row',
-        alignItems: 'center',
         justifyContent: 'center',
+        alignItems: 'center',
+        flex: 2,
     },
-
-    title:{
-        includeFontPadding: false,
+    flexContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center', // Center children horizontally
+    },
+    titleContainer: {
+        //backgroundColor: 'red', // For testing purposes
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center', // Center children horizontally
+    },
+    profileMenuContainer: {
+        //backgroundColor: 'white',
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'flex-end', // Center children horizontally
+    },
+    title: {
+        fontSize: 35,
         color: '#fff',
-        fontSize: 40,
     },
-
-    content:{
-        flex: 15,
+    content: {
+        flex: 18,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    profileMenu: {
+        width: 35,
+        height: 35,
+        borderRadius: 50,
+        marginRight: '15%',
     },
 });

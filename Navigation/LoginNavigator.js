@@ -4,19 +4,23 @@ import React from "react";
 import Name from "../SignIn/CreateAccount/Name";
 import AccountCreation from "../SignIn/CreateAccount/AccountCreation";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import {useAuth} from "../SignIn/CreateAccount/AuthContext";
 import Country from "../SignIn/CreateAccount/AccountData/Country";
 import HomeTab from "./HomeTab";
+import * as SplashScreen from "expo-splash-screen";
+import {useContextMetadata} from "../MetadataContext";
 
 const Stack = createNativeStackNavigator();
 
 const NotLoggedInNavigator = () => {
-    const {isLoggedIn} = useAuth();
+    const {loading, currentUser} = useContextMetadata();
+
+    if(!loading)
+        SplashScreen.hideAsync();
 
     return (
-        <Stack.Navigator initialRouteName={'LoadingScreen'}>
+        <Stack.Navigator>
             {
-                isLoggedIn ? (
+                currentUser !== null ? (
                         <>
                             <Stack.Screen name='HomeTab' component={HomeTab} options={{headerShown: false}}/>
 

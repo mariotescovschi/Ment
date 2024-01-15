@@ -1,19 +1,28 @@
-import {Pressable, SafeAreaView, StyleSheet, View} from 'react-native';
+import {Pressable, SafeAreaView, StyleSheet, View, Text} from 'react-native';
 import {ParamListBase, useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import CustomText from "../assets/CustomText";
 import React, {useState} from "react";
-import {FIREBASE_AUTH} from "../FireBaseConfig";
+import {FIREBASE_AUTH, FIRESTORE_DB} from "../FireBaseConfig";
 import {Image} from "expo-image";
+import {useContextMetadata} from "../MetadataContext";
+import {useContextAddFriends} from "../AddFriendsContext";
+
+
 const Home = () => {
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
     const currentUser = FIREBASE_AUTH.currentUser;
-
+    const {userPhoto} = useContextMetadata();
     return (
         <SafeAreaView style={style.page}>
             {/* The header */}
             <View style={style.header}>
                 <View style={style.flexContainer}>
+                    <Pressable onPress={() => {
+                        navigation.navigate('AddFriends');
+                    }}>
+                    <Text style={{color: 'white'}}>Add Friends</Text>
+                    </Pressable>
                     {/* Left Placeholder for balance, can be used for a back button or similar */}
                 </View>
 
@@ -24,7 +33,7 @@ const Home = () => {
                 <View style={style.profileMenuContainer}>
                     <Pressable onPress={() => navigation.navigate('Account')}>
                         {/* Profile image */}
-                        <Image source={{ uri: currentUser.photoURL }}
+                        <Image source={{ uri: userPhoto}}
                                style={style.profileMenu}
                                 cachePolicy='memory-disk'/>
                     </Pressable>
@@ -73,7 +82,7 @@ const style = StyleSheet.create({
         color: '#fff',
     },
     content: {
-        flex: 15,
+        flex: 18,
         justifyContent: 'center',
         alignItems: 'center',
     },

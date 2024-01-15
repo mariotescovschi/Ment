@@ -1,19 +1,16 @@
 import {NavigationContainer} from '@react-navigation/native';
 import React from "react";
-import {AuthProvider} from "./SignIn/CreateAccount/AuthContext";
 import LoginNavigator from "./Navigation/LoginNavigator";
 import {CustomDropdownProvider} from "./SignIn/CreateAccount/AccountData/DropdownContext";
 import {ContinueProvider} from "./SignIn/CreateAccount/ContinueContext";
 import {MetadataProvider} from "./MetadataContext";
 import * as SplashScreen from 'expo-splash-screen';
+import {AddFriendsProvider} from "./AddFriendsContext";
 export default function App(){
-
-    SplashScreen.preventAutoHideAsync();
-    setTimeout(SplashScreen.hideAsync, 2000);
 
         return (
            <MetadataProvider>
-            <AuthProvider>
+               <AddFriendsProvider>
                 <ContinueProvider>
                 <CustomDropdownProvider>
             <NavigationContainer>
@@ -21,7 +18,7 @@ export default function App(){
             </NavigationContainer>
                 </CustomDropdownProvider>
                 </ContinueProvider>
-            </AuthProvider>
+               </AddFriendsProvider>
            </MetadataProvider>
         );
 }

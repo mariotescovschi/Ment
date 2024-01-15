@@ -3,31 +3,35 @@ import {ParamListBase, useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import React, {useState} from "react";
 import {useContextMetadata} from "../../MetadataContext";
-import {FIREBASE_AUTH} from "../../FireBaseConfig";
+import {FIREBASE_AUTH, FIRESTORE_DB} from "../../FireBaseConfig";
 import {launchImageLibraryAsync, MediaTypeOptions} from "expo-image-picker";
 import {getDownloadURL, getStorage, ref, uploadBytesResumable, uploadBytes} from "firebase/storage";
 import {Image} from "expo-image";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {updateProfile} from "firebase/auth";
 import {manipulateAsync, SaveFormat} from "expo-image-manipulator";
+import firebase from "firebase/compat";
+import {collection, doc, getDoc, updateDoc} from "firebase/firestore";
+import {useContextAddFriends} from "../../AddFriendsContext";
+
 
 const Account = () => {
+    const database = FIRESTORE_DB;
+    const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+    const {userName, userPhoto, setUserPhoto} = useContextMetadata();
+    const currentUser = FIREBASE_AUTH.currentUser;
 
+    const {userData, setUserData} = useContextMetadata();
     const resizeImage = async (uri) => {
         const resizedImage = await manipulateAsync(
             uri,
-            [{ resize: { width: 800, height: 600 } }],
+            [{ resize: { width: 800, height: 450 } }],
             {compress: 0.8, format: SaveFormat.PNG }
         );
         return resizedImage.uri;
     };
 
-   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
-   const {userName, userPhoto, setUserPhoto} = useContextMetadata();
-   const [image, setImage] = useState(null);
-   const currentUser = FIREBASE_AUTH.currentUser;
-   const [blob, setBlob] = useState(null);
-   const uploadImage = async (uri: string) => {
+    const uploadImage = async (uri: string) => {
        const startTime = performance.now();
 
            const uriToBlob = (uri: string): Promise<Blob> => {
@@ -52,7 +56,6 @@ const Account = () => {
       //console.log(blob);
       const storageRef = ref(getStorage(), 'ProfilePictures/' + currentUser.uid);
       const uploadTask = uploadBytesResumable(storageRef, blob);
-
 // Listen for state changes, errors, and completion of the upload.
        uploadTask.on('state_changed',
            (snapshot) => {
@@ -90,9 +93,22 @@ const Account = () => {
                // Upload completed successfully, now we can get the download URL
                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                    console.log('File available at', downloadURL);
+                   const userRef = doc(database, "users", currentUser.uid);
+                   const usersDocRef = doc(FIRESTORE_DB, "groups", userData.country, userData.zone, userData.school, userData.grade.toString(), currentUser.uid);
+
+                   updateDoc(userRef, {
+                          photo: downloadURL,
+                     });
+
+                     updateDoc(usersDocRef, {
+                          photo: downloadURL,
+                     });
+
                    updateProfile(currentUser, {
                           photoURL: downloadURL,
-                     }).then(() => {
+                   }).then(() => {
+                       const cacheBustedURI = `${currentUser.photoURL}?cacheBust=${new Date().getTime()}`;
+                       setUserPhoto(cacheBustedURI);
                      }).catch((error) => {
                           console.log(error);
                      });
@@ -109,7 +125,7 @@ const Account = () => {
       const result = await launchImageLibraryAsync({
          mediaTypes: MediaTypeOptions.Images,
          allowsEditing: true,
-         aspect: [4, 3],
+         aspect: [16, 9],
          quality: 0.8,
       });
 
@@ -143,7 +159,7 @@ const Account = () => {
             </View>
             <View style={style.content}>
                <Pressable onPress={() => {pickImage()}}>
-                <Image source = {{uri : currentUser.photoURL}}
+                <Image source = {{uri : userPhoto}}
                        style={style.profilePicture}
                        cachePolicy={"memory-disk"}/>
                </Pressable>

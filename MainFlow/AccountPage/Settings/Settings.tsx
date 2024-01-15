@@ -1,17 +1,20 @@
-import {Image, Pressable, SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {Pressable, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {FIREBASE_AUTH} from "../../../FireBaseConfig";
 import {ParamListBase, useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
-import {useAuth} from "../../../SignIn/CreateAccount/AuthContext";
 import CustomText from "../../../assets/CustomText";
 import React from "react";
+import {useContextMetadata} from "../../../MetadataContext";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import {Image} from "expo-image";
 const auth = FIREBASE_AUTH;
 const Settings = () => {
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
-    const { setIsLoggedIn } = useAuth();
+    const {setCurrentUser} = useContextMetadata();
     const signOutUser = async () => {
         try {
-            setIsLoggedIn(false);
+            setCurrentUser(null);
+            AsyncStorage.removeItem('currentUser');
             await auth.signOut();
         }
         catch (error) {

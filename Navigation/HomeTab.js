@@ -7,6 +7,7 @@ import Poll from "../MainFlow/Poll";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import Account from "../MainFlow/AccountPage/Account";
 import Settings from "../MainFlow/AccountPage/Settings/Settings";
+import AddFriends from "../MainFlow/AccountPage/AddFriendsFlow/AddFriends";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -75,6 +76,7 @@ function HomeTab() {
     return (
         <Stack.Navigator>
             <Stack.Screen name='HomeTabs' component={HomeTabs} options={{headerShown: false}}/>
+            <Stack.Screen name='AddFriends' component={AddFriends} options={{headerShown: false}}/>
             <Stack.Screen name='Account' component={Account} options={{headerShown: false}}/>
             <Stack.Screen name='Settings' component={Settings} options={{headerShown: false}}/>
         </Stack.Navigator>
