@@ -14,6 +14,7 @@ import {FIREBASE_AUTH} from '../FireBaseConfig';
 import {signInWithEmailAndPassword, sendPasswordResetEmail} from 'firebase/auth';
 import CustomText from "../assets/CustomText";
 import {useContextMetadata} from "../MetadataContext";
+import {cacheString} from "../CachingFunctions";
 
 const Login = () => {
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
@@ -29,8 +30,10 @@ const Login = () => {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
 
-            if (user.emailVerified)
+            if (user.emailVerified) {
+                await cacheString(user.uid, 'currentUser');
                 setCurrentUser(user.uid);
+            }
 
             else
                 alert('Error');

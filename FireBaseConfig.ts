@@ -1,11 +1,8 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import {getAuth, getReactNativePersistence, initializeAuth} from "firebase/auth";
-import { getDatabase} from "firebase/database";
+import {getReactNativePersistence, initializeAuth} from "firebase/auth";
 import { getStorage } from "firebase/storage";
 import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
 import { getFirestore } from "firebase/firestore";
-import { getMessaging, getToken } from "firebase/messaging";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -28,7 +25,3 @@ export const FIREBASE_AUTH = initializeAuth(FIREBASE_APP, {
    });
 export const FIRESTORE_DB = getFirestore(FIREBASE_APP);
 export const FIREBASE_STORAGE = getStorage();
-
-export const messaging = getMessaging(FIREBASE_APP);
-
-getToken(messaging, {vapidKey: "BIy4E3lxlUgjr4GKWAtOrJCpnogvg5E5vrOAkQF1OZ-4Kj8XnQqWtFIyLSIm033N13f_ugvRi2C7dsvRs8JtmPs"});

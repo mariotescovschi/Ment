@@ -1,17 +1,16 @@
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
-import CustomText from "../assets/CustomText";
+import CustomText from "../../assets/CustomText";
 import React from "react";
-
 
 const Poll = () => {
 
-    return(
+    return (
         <SafeAreaView style={style.page}>
             <View style={style.header}>
-                <CustomText style = {style.title}> MENT </CustomText>
+                <CustomText style={style.title}> MENT </CustomText>
             </View>
             <View style={style.content}>
-            <Text style={{color: 'white'}}>cacamaca</Text>
+                <Text style={{color: 'white'}}>cacamaca</Text>
             </View>
         </SafeAreaView>
     );

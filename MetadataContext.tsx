@@ -1,120 +1,114 @@
 import React, {createContext, useContext, useEffect, useState} from 'react';
 import * as SplashScreen from "expo-splash-screen";
-import {doc, DocumentData, getDoc, onSnapshot} from "firebase/firestore";
+import {doc, getDoc, onSnapshot} from "firebase/firestore";
 import {Image} from "expo-image";
 import {FIRESTORE_DB} from "./FireBaseConfig";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import {cacheObject, getCachedObject, getCachedString} from "./CachingFunctions";
-
+import {cacheObject, cacheString, getCachedObject, getCachedString} from "./CachingFunctions";
 
 interface MetadataContextProps {
-	userName: string;
-	setUserName: React.Dispatch<React.SetStateAction<string>>;
+    userName: string;
+    setUserName: React.Dispatch<React.SetStateAction<string>>;
 
-	userPhoto: string;
-	setUserPhoto: React.Dispatch<React.SetStateAction<string>>;
+    userPhoto: string;
+    setUserPhoto: React.Dispatch<React.SetStateAction<string>>;
 
-	loading: boolean;
-	setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+    loading: boolean;
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 
-	currentUser: string;
-	setCurrentUser: React.Dispatch<React.SetStateAction<string>>;
-
-	userData: DocumentData;
-	setUserData: React.Dispatch<React.SetStateAction<DocumentData>>;
+    currentUser: string;
+    setCurrentUser: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const MetadataContext = createContext<MetadataContextProps | undefined>(undefined);
 
 export const useContextMetadata = () => {
-	const context = useContext(MetadataContext);
+    const context = useContext(MetadataContext);
 
-	if (!context)
-		throw new Error('useContextMetadata must be used within a MetadataProvider');
+    if (!context)
+        throw new Error('useContextMetadata must be used within a MetadataProvider');
 
-	return context;
+    return context;
 };
 
-export const MetadataProvider = ({ children }) => {
-	const [userName, setUserName] = useState('');
-	const [userPhoto, setUserPhoto] = useState('');
-	const [loading, setLoading] = useState(true);
-	const [currentUser, setCurrentUser] = useState(null);
-	const [userData, setUserData] = useState<DocumentData>();
-	const db = FIRESTORE_DB;
+export const MetadataProvider = ({children}) => {
+    const [userName, setUserName] = useState('');
+    const [userPhoto, setUserPhoto] = useState('');
+    const [loading, setLoading] = useState(true);
+    const [currentUser, setCurrentUser] = useState(null);
+    const db = FIRESTORE_DB;
 
-	SplashScreen.preventAutoHideAsync();
+    SplashScreen.preventAutoHideAsync();
 
-	const preFetch = async () => {
-		console.log(userData);
-			const docRef = doc(db, "users", currentUser);
-			getDoc(docRef).then((doc) => {
-				if (doc.exists()) {
-					setUserData(doc.data());
-					cacheObject(doc.data(), 'userData');
-				} else {
-					console.log("No such document!");
-				}
-			}).catch((error) => {
-				console.log("Error getting document:", error);
-			});
+    useEffect(() => {
 
-	}
+        let unsubscribe = () => {};
+        setLoading(true);
 
-	if(!userData && currentUser)
-		preFetch();
+        if (currentUser !== null) {
+            const docRef = doc(db, "users", currentUser);
+            getDoc(docRef).then((doc) => {
+                if (doc.exists()) {
+                    setUserName(doc.data().name + ' ' + doc.data().lastName);
+                    cacheString(doc.data().name + ' ' + doc.data().lastName, 'userName');
 
-	useEffect(() => {
-		let unsubscribe = () => {};
+                    setUserPhoto(doc.data().photo);
+                    cacheString(doc.data().photo, 'userPhoto');
+                    Image.prefetch(doc.data().photo);
+                }
+            });
 
-		//Loading screen sau ceva pulai
-		setLoading(true);
-		if(!currentUser)
-			AsyncStorage.getItem('currentUser').then((value) => {
-				if(value !== null)
-					setCurrentUser(value);
-			});
+            unsubscribe = onSnapshot(
+                doc(db, "users", currentUser),
+                {includeMetadataChanges: true},
+                (doc) => {
+                    setUserName(doc.data().name + ' ' + doc.data().lastName);
+                    cacheString(doc.data().name + ' ' + doc.data().lastName, 'userName');
 
-		else{
-			AsyncStorage.setItem('currentUser', currentUser);
+                    if (getCachedString('userPhoto') !== doc.data().photo)
+                        Image.prefetch(doc.data().photo);
 
-			unsubscribe = onSnapshot(
-				doc(db, "users", currentUser),
-				{ includeMetadataChanges: true },
-				(doc) => {
-					setUserName(doc.data().name + ' ' + doc.data().lastName);
-					AsyncStorage.setItem('userName', doc.data().name + ' ' + doc.data().lastName);
+                    setUserPhoto(doc.data().photo);
+                    cacheString(doc.data().photo, 'userPhoto');
 
-					setUserPhoto(doc.data().photo);
-					AsyncStorage.setItem('userPhoto', doc.data().photo);
+                    setLoading(false);
+                    SplashScreen.hideAsync();
+                }
+            );
+        }
+        else {
+            getCachedString('currentUser').then((value) => {
+                if (value !== null && value !== undefined) {
+                    getCachedString('userName').then((value) => {
+                        if (value !== null && value !== undefined) {
+                            setUserName(value);
 
-					if(getCachedString('userPhoto') !== doc.data().photo)
-						Image.prefetch(userPhoto);
+                            getCachedString('userPhoto').then((value) => {
+                                if (value !== null && value !== undefined)
+                                    setUserPhoto(value),
+                                        Image.prefetch(value);
+                            });
+                        }
+                    });
 
-					setLoading(false);
-					SplashScreen.hideAsync();
-				}
-			);
+                    setCurrentUser(value);
+                }
+            });
+        }
 
+        SplashScreen.hideAsync();
+        return () => unsubscribe();
 
-		}
+    }, [currentUser]);
 
-		SplashScreen.hideAsync();
-
-		return () => unsubscribe();
-
-	}, [currentUser]);
-
-	return (
-		<MetadataContext.Provider
-			value={{
-				userName, setUserName,
-				userPhoto, setUserPhoto,
-				loading, setLoading,
-				currentUser, setCurrentUser,
-				userData, setUserData,
-			}}>
-			{children}
-		</MetadataContext.Provider>
-	);
+    return (
+        <MetadataContext.Provider
+            value={{
+                userName, setUserName,
+                userPhoto, setUserPhoto,
+                loading, setLoading,
+                currentUser, setCurrentUser,
+            }}>
+            {children}
+        </MetadataContext.Provider>
+    );
 };

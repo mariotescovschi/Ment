@@ -13,7 +13,7 @@ import {FIREBASE_AUTH, FIRESTORE_DB} from "../../FireBaseConfig";
 import {createUserWithEmailAndPassword, sendEmailVerification} from "firebase/auth";
 import {useCustomDropdownContext} from "./AccountData/DropdownContext";
 import {useContinueContext} from "./ContinueContext";
-import {collection, addDoc, setDoc, doc} from "firebase/firestore";
+import {setDoc, doc} from "firebase/firestore";
 
 const AccountCreation = () => {
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();

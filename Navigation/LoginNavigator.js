@@ -14,27 +14,28 @@ const Stack = createNativeStackNavigator();
 const NotLoggedInNavigator = () => {
     const {loading, currentUser} = useContextMetadata();
 
-    if(!loading)
+    if (!loading)
         SplashScreen.hideAsync();
 
     return (
         <Stack.Navigator>
             {
                 currentUser !== null ? (
-                        <>
-                            <Stack.Screen name='HomeTab' component={HomeTab} options={{headerShown: false}}/>
+                    <>
+                        <Stack.Screen name='HomeTab' component={HomeTab} options={{headerShown: false}}/>
 
-                        </>
-                    ) : (
-                        <>
-                            <Stack.Screen name='Tutorial' component={Tutorial} options={{headerShown: false}}/>
-                            <Stack.Screen name='Login' component={Login} options={{headerShown: false}}/>
-                            <Stack.Screen name='AccountCreation' component={AccountCreation} options={{headerShown: false}}/>
-                            <Stack.Screen name='Name' component={Name} options={{headerShown: false}}/>
-                            <Stack.Screen name='Country' component={Country} options={{headerShown: false}}/>
-                        </>
-                    )
-                }
+                    </>
+                ) : (
+                    <>
+                        <Stack.Screen name='Tutorial' component={Tutorial} options={{headerShown: false}}/>
+                        <Stack.Screen name='Login' component={Login} options={{headerShown: false}}/>
+                        <Stack.Screen name='AccountCreation' component={AccountCreation}
+                                      options={{headerShown: false}}/>
+                        <Stack.Screen name='Name' component={Name} options={{headerShown: false}}/>
+                        <Stack.Screen name='Country' component={Country} options={{headerShown: false}}/>
+                    </>
+                )
+            }
         </Stack.Navigator>
     );
 }

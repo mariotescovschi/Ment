@@ -1,5 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+
 export const cacheObject = async (data: any, key: string) => {
     try {
         await AsyncStorage.setItem(key, JSON.stringify(data));

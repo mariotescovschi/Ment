@@ -4,13 +4,10 @@ import LoginNavigator from "./Navigation/LoginNavigator";
 import {CustomDropdownProvider} from "./SignIn/CreateAccount/AccountData/DropdownContext";
 import {ContinueProvider} from "./SignIn/CreateAccount/ContinueContext";
 import {MetadataProvider} from "./MetadataContext";
-import * as SplashScreen from 'expo-splash-screen';
-import {AddFriendsProvider} from "./AddFriendsContext";
 export default function App(){
 
         return (
            <MetadataProvider>
-               <AddFriendsProvider>
                 <ContinueProvider>
                 <CustomDropdownProvider>
             <NavigationContainer>
@@ -18,7 +15,6 @@ export default function App(){
             </NavigationContainer>
                 </CustomDropdownProvider>
                 </ContinueProvider>
-               </AddFriendsProvider>
            </MetadataProvider>
         );
 }

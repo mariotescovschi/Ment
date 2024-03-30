@@ -13,8 +13,8 @@ const Settings = () => {
     const {setCurrentUser} = useContextMetadata();
     const signOutUser = async () => {
         try {
-            setCurrentUser(null);
             AsyncStorage.removeItem('currentUser');
+            setCurrentUser(null);
             await auth.signOut();
         }
         catch (error) {

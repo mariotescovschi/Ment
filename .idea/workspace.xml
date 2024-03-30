@@ -4,24 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c0abe1c-1360-4ab5-82cd-9b2d992079d3" name="Changes" comment="Upload si cache la poza de profil">
-      <change afterPath="$PROJECT_DIR$/AddFriendsContext.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CachingFunctions.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MainFlow/AccountPage/AddFriendsFlow/AddFriends.tsx" afterDir="false" />
+    <list default="true" id="1c0abe1c-1360-4ab5-82cd-9b2d992079d3" name="Changes" comment="Clean code&#10;Other changes">
+      <change afterPath="$PROJECT_DIR$/MainFlow/AccountPage/ImageFunctions.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AddFriendsContext.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FireBaseConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FireBaseConfig.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CachingFunctions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/CachingFunctions.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FireBaseConfig.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/MainFlow/AccountPage/Account.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/MainFlow/AccountPage/Account.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainFlow/AccountPage/AddFriendsFlow/AddFriends.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/MainFlow/AccountPage/Settings/Settings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/MainFlow/AccountPage/Settings/Settings.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainFlow/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/MainFlow/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainFlow/PhotoFeed.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/MainFlow/PhotoFeed.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainFlow/Poll.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/MainFlow/Poll.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainFlow/Poll.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/MainFlow/Polls/Poll.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MetadataContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/MetadataContext.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Navigation/HomeTab.js" beforeDir="false" afterPath="$PROJECT_DIR$/Navigation/HomeTab.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Navigation/LoginNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/Navigation/LoginNavigator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignIn/AddFriends.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignIn/CreateAccount/AuthContext.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignIn/CreateAccount/AccountCreation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/CreateAccount/AccountCreation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignIn/CreateAccount/AccountData/Country.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/CreateAccount/AccountData/Country.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignIn/Intro/Paginator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/Intro/Paginator.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SignIn/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/babel.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
@@ -34,8 +37,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
-        <option value="TypeScript JSX File" />
         <option value="JavaScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -80,14 +83,14 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/tescovschimario/WebstormProjects/Ment_bun&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/tescovschimario/WebstormProjects/Ment_bun12121&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/tescovschimario/WebstormProjects/Ment_bun/node_modules/typescript/lib&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/tescovschimario/WebstormProjects/Ment_bun12121/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -96,11 +99,11 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/Firebase" />
+      <recent name="$PROJECT_DIR$/MainFlow/Polls" />
       <recent name="$PROJECT_DIR$/MainFlow/AccountPage/AddFriendsFlow" />
       <recent name="$PROJECT_DIR$/assets" />
-      <recent name="$PROJECT_DIR$/MainFlow/AccountPage/Settings" />
-      <recent name="$PROJECT_DIR$/MainFlow/AccountPage" />
-      <recent name="$PROJECT_DIR$/MainFlow" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -218,6 +221,35 @@
       <workItem from="1705054248279" duration="599000" />
       <workItem from="1705327935258" duration="115000" />
       <workItem from="1705341611963" duration="84000" />
+      <workItem from="1706808844064" duration="2663000" />
+      <workItem from="1708965136565" duration="87000" />
+      <workItem from="1708965710563" duration="1741000" />
+      <workItem from="1708970630496" duration="857000" />
+      <workItem from="1709556245029" duration="4857000" />
+      <workItem from="1709633667742" duration="9000" />
+      <workItem from="1710157342841" duration="98000" />
+      <workItem from="1710165558858" duration="4169000" />
+      <workItem from="1710328762901" duration="1404000" />
+      <workItem from="1710335581455" duration="1585000" />
+      <workItem from="1710353033085" duration="599000" />
+      <workItem from="1710410723077" duration="3976000" />
+      <workItem from="1710421089398" duration="599000" />
+      <workItem from="1710493385960" duration="3818000" />
+      <workItem from="1710534580845" duration="7057000" />
+      <workItem from="1710621991138" duration="3174000" />
+      <workItem from="1710756327210" duration="1799000" />
+      <workItem from="1710781894161" duration="1693000" />
+      <workItem from="1710950330018" duration="5000" />
+      <workItem from="1710950829759" duration="5000" />
+      <workItem from="1710953320823" duration="6000" />
+      <workItem from="1711379944061" duration="2336000" />
+      <workItem from="1711555507217" duration="3000" />
+      <workItem from="1711624853938" duration="6985000" />
+      <workItem from="1711790579003" duration="3960000" />
+      <workItem from="1711799692023" duration="1206000" />
+      <workItem from="1711801315598" duration="5019000" />
+      <workItem from="1711808737522" duration="13504000" />
+      <workItem from="1711823715495" duration="483000" />
     </task>
     <task id="LOCAL-00001" summary="pressable + continue">
       <option name="closed" value="true" />
@@ -361,6 +393,7 @@
     <MESSAGE value="Am mai facut ceva la home, curatat codul de erori inutile, schimbat loc la fisiere si foldere etc" />
     <MESSAGE value="firestore cloud, chestii" />
     <MESSAGE value="Upload si cache la poza de profil" />
-    <option name="LAST_COMMIT_MESSAGE" value="Upload si cache la poza de profil" />
+    <MESSAGE value="Clean code&#10;Other changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clean code&#10;Other changes" />
   </component>
 </project>
