@@ -3,10 +3,11 @@ import PhotoFeed from "../MainFlow/PhotoFeed";
 import Home from "../MainFlow/Home";
 import React from "react";
 import {Image} from "react-native";
-import Poll from "../MainFlow/Polls/Poll";
+import PollMenu from "../MainFlow/Polls/PollMenu";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import Account from "../MainFlow/AccountPage/Account";
 import Settings from "../MainFlow/AccountPage/Settings/Settings";
+import Poll from "../MainFlow/Polls/Poll";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -54,7 +55,7 @@ function HomeTabs() {
                     },
                 }}/>
             <Tab.Screen
-                name="Poll" component={Poll}
+                name="Poll" component={PollMenu}
                 options={{
                     headerShown: false,
                     tabBarShowLabel: false,
@@ -79,6 +80,7 @@ function HomeTab() {
             <Stack.Screen name='HomeTabs' component={HomeTabs} options={{headerShown: false}}/>
             <Stack.Screen name='Account' component={Account} options={{headerShown: false}}/>
             <Stack.Screen name='Settings' component={Settings} options={{headerShown: false}}/>
+            <Stack.Screen name='Poll1' component={Poll} options={{headerShown: false}}/>
         </Stack.Navigator>
     );
 }

@@ -14,7 +14,7 @@ import {pickImage} from "./ImageFunctions";
 const Account = () => {
     const database = FIRESTORE_DB;
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
-    const {userName, userPhoto, setUserPhoto} = useContextMetadata();
+    const {userData, setUserData} = useContextMetadata();
     const currentUser = FIREBASE_AUTH.currentUser;
 
     return (
@@ -41,14 +41,14 @@ const Account = () => {
             </View>
             <View style={style.content}>
                 <Pressable onPress={() => {
-                    pickImage(database, currentUser, setUserPhoto);
+                    pickImage(database, currentUser, setUserData, userData);
                 }}>
-                    <Image source={{uri: userPhoto}}
+                    <Image source={{uri: userData.userPhoto}}
                            style={style.profilePicture}
                            cachePolicy={"memory-disk"}/>
                 </Pressable>
                 <Text style={style.userName}>
-                    {userName}
+                    {userData.userName}
                 </Text>
             </View>
 

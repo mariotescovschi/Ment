@@ -3,12 +3,15 @@ import CustomText from "../../assets/CustomText";
 import React, {useEffect} from "react";
 import {useContextMetadata} from "../../MetadataContext";
 import {timeUntilNextPoll} from "./PollFunctions";
+import {ParamListBase, useNavigation} from "@react-navigation/native";
+import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 
 
-const Poll = () => {
+const PollMenu = () => {
     const {polls} = useContextMetadata();
-    const currentUser = useContextMetadata().currentUser;
     const [nextPoll, setNextPoll] = React.useState({ hours: 0, minutes: 0 });
+    const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+
 
     useEffect(() => {
         const updatePollTime = () => {
@@ -36,15 +39,20 @@ const Poll = () => {
             </View>
 
             <View style={style.footer}>
-                <Pressable style={{flex: 1, backgroundColor: 'red', alignItems: 'center', justifyContent: 'center', padding: '3%', marginHorizontal: '6%', borderRadius: 50}}>
-                <Text style={{color: 'white', alignSelf: 'center'}}>{count === 0 ? "Next poll available: " + nextPoll.hours + " hours and " + nextPoll.minutes + " minutes": "Start"}</Text>
+                <Pressable
+                    style={{flex: 1, backgroundColor: 'red', alignItems: 'center', justifyContent: 'center', padding: '3%', marginHorizontal: '6%', borderRadius: 50}}>
+                <Text onPress={() => {
+                    navigation.navigate('Poll1');
+                    console.log("CEPLM");
+                }}
+                    style={{color: 'white', alignSelf: 'center'}}>{count === 0 ? "Next poll available: " + nextPoll.hours + " hours and " + nextPoll.minutes + " minutes": "Start"}</Text>
                 </Pressable>
             </View>
         </SafeAreaView>
     );
 }
 
-export default Poll;
+export default PollMenu;
 
 const style = StyleSheet.create({
     page: {

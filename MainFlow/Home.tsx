@@ -8,7 +8,8 @@ import {useContextMetadata} from "../MetadataContext";
 
 const Home = () => {
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
-    const {userPhoto} = useContextMetadata();
+    const {polls, userData} = useContextMetadata();
+
     return (
         <SafeAreaView style={style.page}>
             {/* The header */}
@@ -29,7 +30,7 @@ const Home = () => {
                 <View style={style.profileMenuContainer}>
                     <Pressable onPress={() => navigation.navigate('Account')}>
                         {/* Profile image */}
-                        <Image source={{uri: userPhoto}}
+                        <Image source={{uri: userData.userPhoto}}
                                style={style.profileMenu}
                                cachePolicy='memory-disk'/>
                     </Pressable>

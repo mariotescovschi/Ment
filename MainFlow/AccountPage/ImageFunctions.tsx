@@ -35,7 +35,7 @@ const uriToBlob = (uri: string): Promise<Blob> => {
  * @param {any} currentUser - The current user.
  * @param {React.Dispatch<React.SetStateAction<string>>} setUserPhoto - The function to update the user's photo in the state.
  */
-const uploadImage = async (uri: string, database: any, currentUser: any, setUserPhoto: React.Dispatch<React.SetStateAction<string>>) => {
+const uploadImage = async (uri: string, database: any, currentUser: any, setUserData, userData) => {
 
     const startTime = performance.now();
 
@@ -80,7 +80,6 @@ const uploadImage = async (uri: string, database: any, currentUser: any, setUser
                     photoURL: downloadURL,
                 }).then(() => {
                     const cacheBustedURI = `${currentUser.photoURL}?cacheBust=${new Date().getTime()}`;
-                    setUserPhoto(cacheBustedURI);
                 }).catch((error) => {
                     console.log(error);
                 });
@@ -112,7 +111,7 @@ const resizeImage = async (uri: string): Promise<string> => {
  * @param {any} currentUser - The current user.
  * @param {React.Dispatch<React.SetStateAction<string>>} setUserPhoto - The function to update the user's photo in the state.
  */
-export const pickImage = async (database: any, currentUser: any, setUserPhoto: React.Dispatch<React.SetStateAction<string>>) => {
+export const pickImage = async (database, currentUser, setUserData, userData) => {
     const result = await launchImageLibraryAsync({
         mediaTypes: MediaTypeOptions.Images,
         allowsEditing: true,
@@ -122,6 +121,6 @@ export const pickImage = async (database: any, currentUser: any, setUserPhoto: R
 
     if (!result.canceled) {
         const image = await resizeImage(result.assets[0].uri);
-        await uploadImage(image, database, currentUser, setUserPhoto);
+        await uploadImage(image, database, currentUser, setUserData, userData);
     }
 }

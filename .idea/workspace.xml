@@ -5,28 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c0abe1c-1360-4ab5-82cd-9b2d992079d3" name="Changes" comment="Clean code&#10;Other changes">
-      <change afterPath="$PROJECT_DIR$/MainFlow/AccountPage/ImageFunctions.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MainFlow/Polls/PollContext.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MainFlow/Polls/PollFunctions.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MainFlow/Polls/PollItem.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MainFlow/Polls/PollMenu.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AddFriendsContext.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CachingFunctions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/CachingFunctions.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FireBaseConfig.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/MainFlow/AccountPage/Account.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/MainFlow/AccountPage/Account.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainFlow/AccountPage/AddFriendsFlow/AddFriends.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainFlow/AccountPage/Settings/Settings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/MainFlow/AccountPage/Settings/Settings.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainFlow/AccountPage/ImageFunctions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/MainFlow/AccountPage/ImageFunctions.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainFlow/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/MainFlow/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainFlow/Poll.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/MainFlow/Polls/Poll.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainFlow/Polls/Poll.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/MainFlow/Polls/Poll.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MetadataContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/MetadataContext.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Navigation/HomeTab.js" beforeDir="false" afterPath="$PROJECT_DIR$/Navigation/HomeTab.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Navigation/LoginNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/Navigation/LoginNavigator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignIn/CreateAccount/AccountCreation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/CreateAccount/AccountCreation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignIn/CreateAccount/AccountData/Country.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/CreateAccount/AccountData/Country.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignIn/Intro/Paginator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/Intro/Paginator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SignIn/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/SignIn/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/babel.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +80,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/tescovschimario/WebstormProjects/Ment_bun12121/node_modules/typescript/lib&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/tescovschimario/WebstormProjects/Ment/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -250,6 +240,16 @@
       <workItem from="1711801315598" duration="5019000" />
       <workItem from="1711808737522" duration="13504000" />
       <workItem from="1711823715495" duration="483000" />
+      <workItem from="1711824674695" duration="4336000" />
+      <workItem from="1711909732906" duration="6495000" />
+      <workItem from="1711970391729" duration="15256000" />
+      <workItem from="1712504523823" duration="3000" />
+      <workItem from="1713264574891" duration="13000" />
+      <workItem from="1713804483669" duration="702000" />
+      <workItem from="1713805801698" duration="175000" />
+      <workItem from="1713806020224" duration="10835000" />
+      <workItem from="1713866863294" duration="1900000" />
+      <workItem from="1713900415387" duration="6213000" />
     </task>
     <task id="LOCAL-00001" summary="pressable + continue">
       <option name="closed" value="true" />
