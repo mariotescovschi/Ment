@@ -1,8 +1,9 @@
-import React, {createContext, useContext, useState} from 'react';
+import React, {createContext, useContext, useEffect, useState} from 'react';
 
 interface userDataType {
     userName: string;
     userPhoto: string;
+    userUID?: string;
 }
 
 interface answerType {
@@ -23,7 +24,11 @@ interface PollContextProps {
     setQuestionIndex: React.Dispatch<React.SetStateAction<number>>;
 
     answers: answerType[];
-    setAnswer: React.Dispatch<React.SetStateAction<answerType[]>>;
+    setAnswers: React.Dispatch<React.SetStateAction<answerType[]>>;
+
+    seconds: number;
+    setSeconds: React.Dispatch<React.SetStateAction<number>>;
+
 }
 
 const PollContext = createContext<PollContextProps | undefined>(undefined);
@@ -64,7 +69,30 @@ export const PollProvider = ({children}) => {
 
     const [questions, setQuestions] = useState<questionType[]>(sampleQuestions);
     const [questionIndex, setQuestionIndex] = useState(0);
-    const [answers, setAnswer] = useState<answerType[]>([]);
+    const [answers, setAnswers] = useState<answerType[]>([]);
+
+    const [seconds, setSeconds] = useState(15);
+    const [isBreak, setIsBreak] = useState(false);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setSeconds(seconds => seconds - 1);
+        }, 1000);
+
+        if (seconds === 0) {
+            if (!isBreak) {
+                setIsBreak(true);
+                setSeconds(5);
+            }
+            else {
+                setIsBreak(false);
+                setQuestionIndex(index => (index + 1) % questions.length);
+                setSeconds(15);
+            }
+        }
+
+        return () => clearInterval(interval);
+    }, [seconds, isBreak, setQuestionIndex, questions.length]);
 
 
     return (
@@ -75,7 +103,9 @@ export const PollProvider = ({children}) => {
                 questionIndex,
                 setQuestionIndex,
                 answers,
-                setAnswer
+                setAnswers,
+                seconds,
+                setSeconds,
             }}>
             {children}
         </PollContext.Provider>

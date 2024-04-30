@@ -5,6 +5,26 @@ import {useContextMetadata} from "../../MetadataContext";
 import {timeUntilNextPoll} from "./PollFunctions";
 import {ParamListBase, useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
+import {FIRESTORE_DB} from "../../FireBaseConfig";
+import {doc, getDoc} from "firebase/firestore";
+
+const startPoll = async (navigation) => {
+
+    const docRef = doc(FIRESTORE_DB, "questions", 'type1');
+    await getDoc(docRef).then((doc) => {
+        if (doc.exists()) {
+            const data = doc.data();
+            let map = new Map();
+            for(let i = 0; i < 12; i++){
+                map.set(data.qq[i], true);
+            }
+        }
+        else {
+            console.log("No such document!");
+        }
+    })
+    navigation.navigate("Poll1");
+}
 
 
 const PollMenu = () => {
@@ -17,7 +37,6 @@ const PollMenu = () => {
         const updatePollTime = () => {
             const nextPollTime = timeUntilNextPoll();
             setNextPoll(nextPollTime);
-            console.log(nextPollTime);
         };
 
         updatePollTime();
@@ -42,10 +61,9 @@ const PollMenu = () => {
                 <Pressable
                     style={{flex: 1, backgroundColor: 'red', alignItems: 'center', justifyContent: 'center', padding: '3%', marginHorizontal: '6%', borderRadius: 50}}>
                 <Text onPress={() => {
-                    navigation.navigate('Poll1');
-                    console.log("CEPLM");
+                    startPoll(navigation);
                 }}
-                    style={{color: 'white', alignSelf: 'center'}}>{count === 0 ? "Next poll available: " + nextPoll.hours + " hours and " + nextPoll.minutes + " minutes": "Start"}</Text>
+                    style={{color: 'white', alignSelf: 'center'}}>{count === 0 ? "Next poll available: " + (nextPoll.hours === 0 ? "" : nextPoll.hours + " hours and ") + nextPoll.minutes + " minutes": "Start"}</Text>
                 </Pressable>
             </View>
         </SafeAreaView>

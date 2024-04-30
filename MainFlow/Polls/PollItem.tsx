@@ -1,34 +1,65 @@
-import {View, StyleSheet, Text, Dimensions} from "react-native";
-import {questionType} from "./PollContext";
+import {View, StyleSheet, Text, Dimensions, Pressable, FlatList} from "react-native";
+import {questionType, useContextPoll} from "./PollContext";
+import {Image} from "expo-image";
+import {useState} from "react";
 
 const screenWidth = Dimensions.get('window').width;
 
-const PollItem = ({ poll }: {poll: questionType})=> {
+const selectAnswer = (answer) => {
+    console.log(answer);
+}
+
+const PollItem = ({poll}: { poll: questionType }) => {
+    const {seconds, setSeconds, questionIndex} = useContextPoll();
+    const {setAnswers, answers} = useContextPoll();
+
     return (
         <View style={style.poll}>
-            <View style={{flex: 5, backgroundColor: 'yellow'}}>
-            <Text style={style.pollText}>{poll.question}</Text>
+            <View style={{flex: 1, width: '100%'}}>
+                <Text style={style.pollText}>{poll.question}</Text>
+                <Text style={{color: 'white', textAlign: 'center'}}>{seconds}</Text>
             </View>
-            <View style={style.optionsContainer}>
-                {poll.options.map((option, index) => (
-                    <View key={index} style={[style.option]}>
-                        <Text style={style.optionText}>{option.userName}</Text>
-                    </View>
-                ))}
-            </View>
+            <View style={{flex: 10}}/>
+                    <FlatList
+                        style={{width: screenWidth}}
+                        data={poll.options}
+                        renderItem={({item}) => (
+                            <Pressable onPress={() => {
+                                setAnswers(currentAnswers => {
 
-            <View style={{flex: 1, backgroundColor: 'green'}}/>
+                                    if (currentAnswers.length === 0)
+                                        return [{question: poll.question, userData: item}];
+
+                                    const newAnswers = [...currentAnswers];
+                                    const lastPosition = newAnswers.length === 0 ? 0 : newAnswers.length - 1;
+                                    newAnswers[questionIndex] = {
+                                        ...newAnswers[newAnswers.length - 1],
+                                        question: poll.question,
+                                        userData: item
+                                    };
+                                    return newAnswers;
+                                });
+                                console.log(answers);
+                            }}
+                                style={style.option}>
+                                <Image source={{uri: item.userPhoto}}/>
+                                <Text style={style.optionText}>{item.userName}</Text>
+                            </Pressable>
+                        )}
+                        scrollEnabled={false}
+                        numColumns={2}
+                    />
         </View>
     );
 }
 
 const style = StyleSheet.create({
     poll: {
-        backgroundColor: 'white',
+        //backgroundColor: 'white',
         flex: 1,
         width: screenWidth,
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
     },
     pollText: {
         fontSize: 24,
@@ -38,18 +69,17 @@ const style = StyleSheet.create({
         color: 'white'
     },
     optionsContainer: {
-        flex: 8,
-        backgroundColor: 'red',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
+        flex: 6,
+        alignItems: 'flex-end',
+        backgroundColor: 'white'
     },
     option: {
+        flex: 2,
+        height: '100%',
         margin: '2%',
-        width: '46%',
-        height: '10%',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'green', // Set the diamond background to green
+        backgroundColor: 'green',
         color: 'white',
     },
     optionText: {
