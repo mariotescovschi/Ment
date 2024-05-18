@@ -3,11 +3,18 @@ import {doc, getDoc, onSnapshot} from "firebase/firestore";
 import {Image} from "expo-image";
 import {FIRESTORE_DB} from "./FireBaseConfig";
 import {cacheString, getCachedString} from "./CachingFunctions";
+import {Asset} from "expo-asset";
 
 interface userDataType {
     userName: string;
     userPhoto: string;
 }
+interface MentSent {
+    to?: userDataType;
+    toUID: string;
+    question: string;
+}
+
 interface MetadataContextProps {
     userData: userDataType;
     setUserData: React.Dispatch<React.SetStateAction<userDataType>>;
@@ -20,6 +27,9 @@ interface MetadataContextProps {
 
     polls: boolean[];
     setPolls: React.Dispatch<React.SetStateAction<boolean[]>>;
+
+    mentsSent: MentSent[];
+    setMentsSent: React.Dispatch<React.SetStateAction<MentSent[]>>;
 }
 
 const MetadataContext = createContext<MetadataContextProps | undefined>(undefined);
@@ -58,20 +68,27 @@ export const MetadataProvider = ({children}) => {
     const [userData, setUserData] = useState({userName: '', userPhoto: ''});
     const [loading, setLoading] = useState(true);
     const [currentUser, setCurrentUser] = useState(null);
+    const [mentsSent, setMentsSent] = useState<MentSent[]>([]);
     const [polls, setPolls] = useState([]);
     const db = FIRESTORE_DB;
 
     useEffect(() => {
 
-        let unsubUserData = () => {};
-        let unsubPolls = () => {};
+        let unsubUserData = () => {
+        };
+        let unsubPolls = () => {
+        };
+
+        let unsubMentsSent = () => {
+
+        }
 
         setLoading(true);
 
         if (currentUser !== null) {
             const fetchData = async () => {
                 try {
-                    const userDoc = await  getDoc(doc(db, "users", currentUser));
+                    const userDoc = await getDoc(doc(db, "users", currentUser));
 
                     if (userDoc.exists()) {
                         const userDocData = userDoc.data();
@@ -81,8 +98,10 @@ export const MetadataProvider = ({children}) => {
                         await cacheString(userDocData.name + ' ' + userDocData.lastName, 'userName');
                         await cacheString(userDocData.photo, 'userPhoto');
 
-                        setUserData({userName: userDocData.name + ' ' + userDocData.lastName,
-                            userPhoto: userDocData.photo})
+                        setUserData({
+                            userName: userDocData.name + ' ' + userDocData.lastName,
+                            userPhoto: userDocData.photo
+                        })
 
                         Image.prefetch(userDocData.photo);
                     }
@@ -94,6 +113,7 @@ export const MetadataProvider = ({children}) => {
             };
 
             fetchData();
+
 
             unsubPolls = onSnapshot(
                 doc(db, "polls", "availability"),
@@ -110,11 +130,51 @@ export const MetadataProvider = ({children}) => {
                 }
             );
 
+            unsubMentsSent = onSnapshot(
+                doc(db, "users", currentUser, "ments", "sent"),
+                { includeMetadataChanges: true },
+                async (document) => {
+                    const mentsSentData = document.data();
+                    const lastArray = mentsSentData[Object.keys(mentsSentData).pop()];
+                    const mentsSentArray = [];
+
+                    if (lastArray) {
+                        // Retrieve the last 5 objects from the last array
+                        const last5Objects = lastArray.slice(-5);
+
+                        // Iterate over the last 5 objects
+                        for (const element of last5Objects) {
+                            // Retrieve user details from the 'users' collection based on 'to' field
+                            const userRef = doc(db, "users", element.to);
+                            const userDoc = await getDoc(userRef);
+
+                            if (userDoc.exists()) {
+                                const userData = userDoc.data();
+                                // Construct userName and userPhoto
+                                const userName = `${userData.name} ${userData.lastName}`;
+                                const userPhoto = userData.photo;
+
+                                await Asset.fromURI(userPhoto).downloadAsync();
+
+                                // Push the modified object to mentsSentArray
+                                mentsSentArray.push({
+                                    toUID: element.to,
+                                    question: element.question,
+                                    to: {userName, userPhoto}
+                                });
+                            }
+                        }
+                    }
+
+                    setMentsSent(mentsSentArray);
+                }
+            );
+
             unsubUserData = onSnapshot(
                 doc(db, "users", currentUser),
                 {includeMetadataChanges: true},
-                (doc) => {
-                    const userDocData = doc.data();
+                (document) => {
+                    const userDocData = document.data();
 
                     updatePolls(userDocData, setPolls);
 
@@ -125,14 +185,15 @@ export const MetadataProvider = ({children}) => {
 
                     cacheString(userDocData.photo, 'userPhoto');
 
-                    setUserData({userName: userDocData.name + ' ' + userDocData.lastName,
-                        userPhoto: userDocData.photo})
+                    setUserData({
+                        userName: userDocData.name + ' ' + userDocData.lastName,
+                        userPhoto: userDocData.photo
+                    })
 
                     setLoading(false);
                 }
             );
-        }
-        else {
+        } else {
 
             getCachedString('currentUser').then((value) => {
                 if (value !== null && value !== undefined) {
@@ -155,6 +216,7 @@ export const MetadataProvider = ({children}) => {
         return () => {
             unsubUserData();
             unsubPolls();
+            unsubMentsSent();
         };
 
     }, [currentUser]);
@@ -164,6 +226,7 @@ export const MetadataProvider = ({children}) => {
             value={{
                 userData, setUserData,
                 loading, setLoading,
+                mentsSent, setMentsSent,
                 currentUser, setCurrentUser,
                 polls, setPolls,
             }}>

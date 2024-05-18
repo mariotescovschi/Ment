@@ -1,6 +1,32 @@
 import {doc, getDoc, updateDoc} from "firebase/firestore";
-import {FIRESTORE_DB} from "../../FireBaseConfig";
-import {Ment} from "./PollContext";
+import {FIREBASE_AUTH, FIRESTORE_DB} from "../../FireBaseConfig";
+import {Ment, questionType} from "./PollContext";
+import {writeBatch} from "firebase/firestore";
+import React from "react";
+
+export const startPoll = async (setQuestions: React.Dispatch<React.SetStateAction<questionType[]>>) => {
+    const user = FIREBASE_AUTH.currentUser;
+    const token = await user.getIdToken();
+
+    await fetch("https://europe-central2-ment-12376.cloudfunctions.net/getPoll", {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json',
+        }
+    })
+        .then(response => response.json()).then(data => {
+            const formattedData: questionType[] = data.map(item => ({
+                question: item.question,
+                options: item.users.map(option => ({
+                    userName: option.userName,
+                    userPhoto: option.userPhoto,
+                    userUID: option.userUID
+                }))
+            }));
+            setQuestions(formattedData);
+        });
+}
 
 export const timeUntilNextPoll = (): { hours: number, minutes: number } => {
     const pollTimes = [
@@ -34,7 +60,7 @@ export const timeUntilNextPoll = (): { hours: number, minutes: number } => {
     return nextPollTime;
 };
 
-const updatePollsDone = async (index: number, currentUser: string): Promise<any | null> => {
+const updatePollsDone = async (index: number, currentUser: string) => {
     try {
         const docRef = doc(FIRESTORE_DB, "users", currentUser);
 
@@ -49,37 +75,57 @@ const updatePollsDone = async (index: number, currentUser: string): Promise<any 
             updatedData[index] = currentDate;
             await updateDoc(docRef, {pollsDone: updatedData});
 
-            return data;
         } else {
             console.log("No such document!");
-            return null;
         }
     } catch (error) {
         console.error("Error updating document: ", error);
-        return null;
     }
 };
 
-//update in users/pollsDone[index] current date when poll done
 export const PollsDone = async (index: number, currentUser: string, answers: Ment[]) => {
     try {
-        const userData = await updatePollsDone(index, currentUser);
-        const docRef = doc(FIRESTORE_DB, 'groups', userData.country, userData.zone, userData.school, userData.grade, 'ments');
 
+        await updatePollsDone(index, currentUser);
+
+        // Generate a batch instance
+        const batch = writeBatch(FIRESTORE_DB);
+
+        // Get the document reference
+        const docRef = doc(FIRESTORE_DB, 'users', currentUser, 'ments', 'sent');
+
+        // Create the base for the batch name
         const newDate = new Date();
-        const batchName = currentUser + '\\' + newDate.toISOString();
+        const timestamp = newDate.toISOString().split('.')[0];
 
-        await updateDoc(docRef,
-            {
-                [batchName]:{
-                    Ments: answers,
-                    date: new Date()
-                }
-            });
+        // Prepare the data for the update
+        const answersArray = answers.map((answer) => ({
+            question: answer.question,
+            options: answer.options,
+            from: currentUser,
+            to: answer.to,
+            timestamp: timestamp
+        }));
 
+        const updateData = {
+            [timestamp]: answersArray
+        };
+
+        // Add the update to the batch
+        batch.update(docRef, updateData);
+
+        // Commit the batch
+        await batch.commit();
+
+        await fetch("https://europe-central2-ment-12376.cloudfunctions.net/updateReceivedMents", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ userUid: currentUser, timestamp: timestamp })
+        });
 
     } catch (error) {
         console.error("Error completing poll:", error);
     }
 };
-

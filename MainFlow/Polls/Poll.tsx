@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Pressable, View, Text, SafeAreaView, StyleSheet} from "react-native";
-import {answerType, questionType, useContextPoll} from "./PollContext";
+import {questionType, useContextPoll} from "./PollContext";
 import {Image} from "expo-image";
 import {userDataType} from "./PollContext";
 import {CommonActions, ParamListBase, useNavigation} from "@react-navigation/native";
@@ -22,6 +22,7 @@ interface selectedAnswerDataType {
     questions: questionType[];
     navigation: any;
     currentUser: string;
+    pollIndex: number;
 }
 
 const PollAnswers = ({index, data}: {
@@ -31,44 +32,50 @@ const PollAnswers = ({index, data}: {
 
     const answer: userDataType = data.questions[data.questionIndex].options[index];
     const question = data.questions[data.questionIndex].question;
+    const [loading, setLoading] = useState<boolean>(false);
 
     return (
-        <Pressable onPress={async () => {
+        <Pressable
+            disabled={loading === true}
+            onPress={async () => {
 
-            if (data.selected !== index)
-                data.setSelected(index);
+                if (data.selected !== index)
+                    data.setSelected(index);
 
-            else {
-                data.setSelected(-1);
+                else {
+                    data.setSelected(-1);
 
-                const optionsNames = data.questions[data.questionIndex].options.map(option => option.userName);
-                console.log(optionsNames);
+                    const options = data.questions[data.questionIndex].options.map(option => option.userUID);
 
-                data.setMents([...data.ments,
-                    {
-                        to: answer.userUID,
-                        question: question,
-                        options: optionsNames
-                    }
-                ]);
+                    data.setMents([...data.ments,
+                        {
+                            to: answer.userUID,
+                            question: question,
+                            options: options
+                        }
+                    ]);
 
-                if (data.questionIndex + 1 === 12) {
-                    await PollsDone(index, data.currentUser, data.ments);
+                    if (data.questionIndex + 1 === 12) {
+                        setLoading(true);
 
-                    data.setQuestionIndex(0);
-                    data.setMents([]);
+                        await PollsDone(Math.max(0, data.pollIndex), data.currentUser, data.ments);
 
-                    data.navigation.dispatch(
-                        CommonActions.reset({
-                            index: 0,
-                            routes: [{name: 'PollDone'}],
-                        })
-                    );
-                } else
-                    data.setQuestionIndex(data.questionIndex + 1);
-            }
-        }}
-                   style={[style.option, {backgroundColor: data.selected === index ? 'rgba(11,107,25,0.36)' : null}]}>
+                        data.setQuestionIndex(0);
+                        data.setMents([]);
+
+                        setLoading(false);
+
+                        data.navigation.dispatch(
+                            CommonActions.reset({
+                                index: 0,
+                                routes: [{name: 'PollDone'}],
+                            })
+                        );
+                    } else
+                        data.setQuestionIndex(data.questionIndex + 1);
+                }
+            }}
+            style={[style.option, {backgroundColor: data.selected === index ? 'rgba(11,107,25,0.36)' : null}]}>
 
             <Image source={{uri: answer.userPhoto}} style={style.image}/>
             <Text style={[style.optionText, {}]} numberOfLines={3}>{answer.userName}</Text>
@@ -77,12 +84,13 @@ const PollAnswers = ({index, data}: {
 }
 
 const Poll = () => {
-    const [ments, setMents] = useState<Ment[]>([]);
-
+    const {ments, setMents} = useContextPoll();
     const [selected, setSelected] = useState<number>(-1)
     const [questionIndex, setQuestionIndex] = useState<number>(0);
     const {questions} = useContextPoll();
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+    const {pollIndex} = useContextPoll();
+
 
     const {currentUser} = useContextMetadata();
 
@@ -94,7 +102,8 @@ const Poll = () => {
         ments, setMents,
         questions,
         navigation,
-        currentUser
+        currentUser,
+        pollIndex
     };
 
 
