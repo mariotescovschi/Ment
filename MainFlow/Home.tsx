@@ -1,4 +1,4 @@
-import {Pressable, SafeAreaView, StyleSheet, View, Text} from 'react-native';
+import {Pressable, SafeAreaView, StyleSheet, View, Text, FlatList} from 'react-native';
 import {ParamListBase, useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import CustomText from "../assets/CustomText";
@@ -38,7 +38,9 @@ const Home = () => {
             </View>
 
             <View style={style.content}>
-                {/* Content */}
+                <View style={{flex: 1}}>
+                    <Text style={{color: 'white'}}>Received Ments: </Text>
+                </View>
             </View>
         </SafeAreaView>
     );
@@ -80,8 +82,8 @@ const style = StyleSheet.create({
     },
     content: {
         flex: 18,
-        justifyContent: 'center',
-        alignItems: 'center',
+        //justifyContent: 'center',
+        //alignItems: 'center',
     },
     profileMenu: {
         width: 35,

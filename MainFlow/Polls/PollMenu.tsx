@@ -5,25 +5,30 @@ import {useContextMetadata} from "../../MetadataContext";
 import {timeUntilNextPoll} from "./PollFunctions";
 import {ParamListBase, useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
-import {FIRESTORE_DB} from "../../FireBaseConfig";
-import {doc, getDoc} from "firebase/firestore";
+import {FIREBASE_AUTH} from "../../FireBaseConfig";
+import {questionType, useContextPoll} from "./PollContext";
+const startPoll = async (setQuestions: React.Dispatch<React.SetStateAction<questionType[]>>) => {
+    const user = FIREBASE_AUTH.currentUser;
+    const token = await user.getIdToken();
 
-const startPoll = async (navigation) => {
-
-    const docRef = doc(FIRESTORE_DB, "questions", 'type1');
-    await getDoc(docRef).then((doc) => {
-        if (doc.exists()) {
-            const data = doc.data();
-            let map = new Map();
-            for(let i = 0; i < 12; i++){
-                map.set(data.qq[i], true);
+    await fetch("https://europe-central2-ment-12376.cloudfunctions.net/getPoll", {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json',
             }
-        }
-        else {
-            console.log("No such document!");
-        }
     })
-    navigation.navigate("Poll1");
+        .then(response => response.json()).then(data => {
+            const formattedData:questionType[] = data.map(item => ({
+                question: item.question,
+                options: item.users.map(option => ({
+                    userName: option.userName,
+                    userPhoto: option.userPhoto,
+                    userUID: option.userUID
+                }))
+            }));
+            setQuestions(formattedData);
+        });
 }
 
 
@@ -31,6 +36,7 @@ const PollMenu = () => {
     const {polls} = useContextMetadata();
     const [nextPoll, setNextPoll] = React.useState({ hours: 0, minutes: 0 });
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+    const {setQuestions, setAnswers} = useContextPoll();
 
 
     useEffect(() => {
@@ -61,7 +67,10 @@ const PollMenu = () => {
                 <Pressable
                     style={{flex: 1, backgroundColor: 'red', alignItems: 'center', justifyContent: 'center', padding: '3%', marginHorizontal: '6%', borderRadius: 50}}>
                 <Text onPress={() => {
-                    startPoll(navigation);
+                    startPoll(setQuestions).then(() => {
+                        navigation.replace("Poll1");
+                    });
+
                 }}
                     style={{color: 'white', alignSelf: 'center'}}>{count === 0 ? "Next poll available: " + (nextPoll.hours === 0 ? "" : nextPoll.hours + " hours and ") + nextPoll.minutes + " minutes": "Start"}</Text>
                 </Pressable>

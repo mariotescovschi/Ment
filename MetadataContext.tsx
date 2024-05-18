@@ -20,7 +20,6 @@ interface MetadataContextProps {
 
     polls: boolean[];
     setPolls: React.Dispatch<React.SetStateAction<boolean[]>>;
-
 }
 
 const MetadataContext = createContext<MetadataContextProps | undefined>(undefined);

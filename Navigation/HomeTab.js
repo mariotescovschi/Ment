@@ -8,6 +8,7 @@ import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import Account from "../MainFlow/AccountPage/Account";
 import Settings from "../MainFlow/AccountPage/Settings/Settings";
 import Poll from "../MainFlow/Polls/Poll";
+import PollDone from "../MainFlow/Polls/PollDone";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -81,6 +82,7 @@ function HomeTab() {
             <Stack.Screen name='Account' component={Account} options={{headerShown: false}}/>
             <Stack.Screen name='Settings' component={Settings} options={{headerShown: false}}/>
             <Stack.Screen name='Poll1' component={Poll} options={{headerShown: false}}/>
+            <Stack.Screen name='PollDone' component={PollDone} options={{headerShown: false}}/>
         </Stack.Navigator>
     );
 }

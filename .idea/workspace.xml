@@ -5,11 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c0abe1c-1360-4ab5-82cd-9b2d992079d3" name="Changes" comment="Incerc sa fac poll-urile sa mearga">
+      <change afterPath="$PROJECT_DIR$/MainFlow/Polls/PollDone.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FireBaseConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FireBaseConfig.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firebase/.firebaserc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firebase/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firebase/firebase.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firebase/firestore.indexes.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firebase/firestore.rules" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firebase/functions/.eslintrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firebase/functions/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firebase/functions/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firebase/functions/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firebase/functions/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainFlow/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/MainFlow/Home.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainFlow/Polls/Poll.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/MainFlow/Polls/Poll.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainFlow/Polls/PollContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/MainFlow/Polls/PollContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainFlow/Polls/PollItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/MainFlow/Polls/PollItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainFlow/Polls/PollFunctions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/MainFlow/Polls/PollFunctions.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainFlow/Polls/PollItem.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/MainFlow/Polls/PollMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/MainFlow/Polls/PollMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MetadataContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/MetadataContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Navigation/HomeTab.js" beforeDir="false" afterPath="$PROJECT_DIR$/Navigation/HomeTab.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +40,7 @@
       <list>
         <option value="TypeScript File" />
         <option value="JavaScript File" />
+        <option value="tsconfig.json" />
         <option value="TypeScript JSX File" />
       </list>
     </option>
@@ -66,7 +86,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/tescovschimario/WebstormProjects/Ment_bun12121&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/tescovschimario/WebstormProjects/Ment&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -82,11 +102,11 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/Firebase" />
+      <recent name="$PROJECT_DIR$/Firebase/functions" />
+      <recent name="$PROJECT_DIR$/functions" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/MainFlow/Polls" />
-      <recent name="$PROJECT_DIR$/MainFlow/AccountPage/AddFriendsFlow" />
-      <recent name="$PROJECT_DIR$/assets" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -249,6 +269,16 @@
       <workItem from="1714111603538" duration="3839000" />
       <workItem from="1714183825903" duration="671000" />
       <workItem from="1714186986790" duration="6226000" />
+      <workItem from="1714489494584" duration="694000" />
+      <workItem from="1714500747881" duration="96000" />
+      <workItem from="1714588538796" duration="97000" />
+      <workItem from="1714592481524" duration="12048000" />
+      <workItem from="1714814674780" duration="25478000" />
+      <workItem from="1715455755386" duration="3588000" />
+      <workItem from="1715603758721" duration="13876000" />
+      <workItem from="1715774264347" duration="366000" />
+      <workItem from="1715950516837" duration="13504000" />
+      <workItem from="1715971837542" duration="12305000" />
     </task>
     <task id="LOCAL-00001" summary="pressable + continue">
       <option name="closed" value="true" />
@@ -410,7 +440,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/MainFlow/AccountPage/Account.tsx</url>
           <line>19</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
