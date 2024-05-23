@@ -1,17 +1,20 @@
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
-import CustomText from "../assets/CustomText";
+import CustomText from "../../assets/CustomText";
 import React from "react";
+import {Posting} from "./Posting";
+import {useContextMetadata} from "../../MetadataContext";
 
 
 const PhotoFeed = () => {
-
+    const {currentPhotoMent} = useContextMetadata();
     return(
         <SafeAreaView style={style.page}>
             <View style={style.header}>
                 <CustomText style = {style.title}> MENT </CustomText>
             </View>
             <View style={style.content}>
-                <Text style={{color: 'white'}}>caca</Text>
+                {/*currentPhotoMent data */}
+                <Text style={{color: 'white'}}>{currentPhotoMent.topic}</Text>
             </View>
         </SafeAreaView>
     );

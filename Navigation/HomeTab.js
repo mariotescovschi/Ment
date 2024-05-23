@@ -1,5 +1,5 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import PhotoFeed from "../MainFlow/PhotoFeed";
+import PhotoFeed from "../MainFlow/PhotoMents/PhotoFeed";
 import Home from "../MainFlow/Home";
 import React from "react";
 import {Image} from "react-native";

@@ -47,18 +47,20 @@ const PollAnswers = ({index, data}: {
 
                     const options = data.questions[data.questionIndex].options.map(option => option.userUID);
 
-                    data.setMents([...data.ments,
-                        {
-                            to: answer.userUID,
-                            question: question,
-                            options: options
-                        }
-                    ]);
+                    let newData = [...data.ments];
+
+                    newData.push({
+                        to: answer.userUID,
+                        question: question,
+                        options: options
+                    })
+
+                    data.setMents(newData);
 
                     if (data.questionIndex + 1 === 12) {
                         setLoading(true);
 
-                        await PollsDone(Math.max(0, data.pollIndex), data.currentUser, data.ments);
+                        await PollsDone(Math.max(0, data.pollIndex), data.currentUser, newData);
 
                         data.setQuestionIndex(0);
                         data.setMents([]);
@@ -84,7 +86,7 @@ const PollAnswers = ({index, data}: {
 }
 
 const Poll = () => {
-    const {ments, setMents} = useContextPoll();
+    const [ments, setMents] = useState<Ment[]>([]);
     const [selected, setSelected] = useState<number>(-1)
     const [questionIndex, setQuestionIndex] = useState<number>(0);
     const {questions} = useContextPoll();

@@ -1,6 +1,6 @@
 import {FlatList, Pressable, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import CustomText from "../../assets/CustomText";
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {useContextMetadata} from "../../MetadataContext";
 import {timeUntilNextPoll} from "./PollFunctions";
 import {ParamListBase, useNavigation} from "@react-navigation/native";
@@ -9,10 +9,26 @@ import {useContextPoll} from "./PollContext";
 import {startPoll} from "./PollFunctions";
 import {Image} from "expo-image";
 
+const renderLatestMents = (item) => {
+    return (
+        <View style={{padding: '2%', flex: 1}}>
+            <View style={{flex: 1, padding: '1%'}}>
+                <Text style={{color: 'white', fontSize: 18}}>{item.question}</Text>
+            </View>
+            <View style={{flexDirection: 'row', alignItems: 'center', flex: 1, padding: '1%', marginLeft: '5%'}}>
+                <Image
+                    source={{uri: item.to.userPhoto}}
+                    style={{width: 30, height: 30, borderRadius: 15, marginRight: '2%'}}
+                />
+                <Text style={{color: 'white', fontSize: 18}}>{item.to.userName}</Text>
+            </View>
+        </View>
+    );
+}
+
 const PollMenu = () => {
     const {polls} = useContextMetadata();
     const {mentsSent} = useContextMetadata();
-    console.log(mentsSent);
     const [nextPoll, setNextPoll] = React.useState({hours: 0, minutes: 0});
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
     const {setQuestions} = useContextPoll();
@@ -39,34 +55,45 @@ const PollMenu = () => {
                 style={style.header}>
                 <CustomText style={style.title}> MENT </CustomText>
             </View>
+
+
             <View style={style.content}>
-                    <Text onPress={() =>    {
+                <View style={{flex: 6}}>
+                    <Text onPress={() => {
                         mentsSent.map((ment) => {
                             console.log(ment.to.userName);
                         });
                     }}
-                        style={{color: 'white'}}>Your ments: </Text>
+                          style={{color: 'white', marginLeft: '2%'}}>YOUR LATEST MENTS: </Text>
                     <FlatList
+                        ItemSeparatorComponent={() => <View
+                            style={{height: 1, backgroundColor: 'grey', width: '80%', alignSelf: 'center'}}/>}
+                        initialNumToRender={4}
+                        style={{borderRadius: 15, borderWidth: 0, borderColor: 'grey', flex: 1, marginHorizontal: '3%'}}
                         data={mentsSent}
-                        renderItem ={({item}) => {
-                            return (
-                                <View style={{flexDirection: 'row', alignItems: 'center', padding: 10}}>
-                                    {/* Display user photo */}
-                                    <Image
-                                        source={{uri: item.to.userPhoto}}
-                                        style={{width: 50, height: 50, borderRadius: 25, marginRight: 10}}
-                                    />
-                                    {/* Display user name */}
-                                    <View>
-                                        <Text style={{color: 'white'}}>{item.to.userName}</Text>
-                                        {/* Display question */}
-                                        <Text style={{color: 'white'}}>{item.question}</Text>
-                                    </View>
-                                </View>
-                            );
-                        }}/>
-            </View>
+                        scrollEnabled={false}
+                        renderItem={({item}) => renderLatestMents(item)}
+                        ListFooterComponent={() => <View style={{}}>
+                            <Pressable
+                                onPress={() => {
+                                    //navigation.navigate('PollHistory');
+                                }}
+                                style={{
+                                    backgroundColor: 'grey',
+                                    padding: '2%',
+                                    marginHorizontal: '6%',
+                                    borderRadius: 50,
+                                    width: '35%',
+                                    alignSelf: 'center'
+                                }}>
+                                <Text style={{color: 'white', alignSelf: 'center'}}>View Poll History</Text>
+                            </Pressable>
+                        </View>
+                        }
 
+                    />
+                </View>
+            </View>
             <View style={style.footer}>
                 <Pressable
                     disabled={loading === true}
@@ -119,9 +146,6 @@ const style = StyleSheet.create({
     },
     content: {
         flex: 16,
-        //flexDirection: 'row',
-        //justifyContent: 'center',
-        //alignItems: 'center',
     },
     footer: {
         flex: 2,

@@ -5,10 +5,33 @@ import CustomText from "../assets/CustomText";
 import React from "react";
 import {Image} from "expo-image";
 import {useContextMetadata} from "../MetadataContext";
+import {FIRESTORE_DB} from "../FireBaseConfig";
+import {doc, updateDoc} from "firebase/firestore";
+
+const renderLatestMents = (item) => {
+    return (
+        <View style={{padding: '2%', flex: 1}}>
+            <View style={{flex: 1, padding: '1%'}}>
+                <Text style={{color: 'green', fontSize: 18}}>You were mented as:</Text>
+                <Text style={{color: 'white', fontSize: 18}}>{item.question}</Text>
+            </View>
+        </View>
+    );
+}
 
 const Home = () => {
     const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
     const {polls, userData} = useContextMetadata();
+    const {mentsReceived} = useContextMetadata();
+
+    function getRandomTime(min: number, max: number): string {
+        const hour = Math.floor(Math.random() * (max - min + 1)) + min;
+        const minute = Math.floor(Math.random() * 60);
+        const hourStr = hour < 10 ? `0${hour}` : `${hour}`;
+        const minuteStr = minute < 10 ? `0${minute}` : `${minute}`;
+        return `${hourStr}:${minuteStr}`;
+    }
+
 
     return (
         <SafeAreaView style={style.page}>
@@ -16,7 +39,7 @@ const Home = () => {
             <View style={style.header}>
                 <View style={style.flexContainer}>
                     <Pressable onPress={() => {
-                        console.log("PULA");
+                        
                     }}>
                         <Text style={{color: 'white'}}>Add Friends</Text>
                     </Pressable>
@@ -39,7 +62,33 @@ const Home = () => {
 
             <View style={style.content}>
                 <View style={{flex: 1}}>
-                    <Text style={{color: 'white'}}>Received Ments: </Text>
+                    <FlatList
+                        ItemSeparatorComponent={() => <View
+                            style={{height: 1, backgroundColor: 'grey', width: '80%', alignSelf: 'center'}}/>}
+                        initialNumToRender={4}
+                        style={{borderRadius: 15, borderWidth: 0, borderColor: 'grey', flex: 1, marginHorizontal: '3%'}}
+                        data={mentsReceived}
+                        scrollEnabled={false}
+                        renderItem={({item}) => renderLatestMents(item)}
+                        ListFooterComponent={() => <View style={{}}>
+                            <Pressable
+                                onPress={() => {
+                                    console.log("View all ments")
+                                }}
+                                style={{
+                                    backgroundColor: 'grey',
+                                    padding: '2%',
+                                    marginHorizontal: '6%',
+                                    borderRadius: 50,
+                                    width: '35%',
+                                    alignSelf: 'center'
+                                }}>
+                                <Text style={{color: 'white', alignSelf: 'center'}}>View All Ments</Text>
+                            </Pressable>
+                        </View>
+                        }
+
+                    />
                 </View>
             </View>
         </SafeAreaView>

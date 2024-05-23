@@ -22,7 +22,7 @@ export default function CustomText(props){
     }
 
     return (
-        <Text style={{ ...props.style, fontFamily: 'AsapCondensed' }}>
+        <Text style={{ ...props.style, fontFamily: 'AsapCondensed', color: 'green' }}>
             {props.children}
         </Text>
     );
